@@ -14,6 +14,7 @@ app.listen(port, function(){
 
 app.post('/hello', function(req, res, next){
   var userName = req.body.user_name; 
+  console.log('log this')
   var botPayload= {
     text: 'Hello ' + userName + ', welcome to Lg Slack channel! Have fun :) '
   };
