@@ -15,10 +15,10 @@ app.listen(port, function(){
 app.post('/hello', function(req, res, next){
   var userName = req.body.user_name; 
   var botPayload= {
-    text: 'Hello ' + userName + ', welcome to Lg Slack channel! Have fun :)'
+    text: 'Hello ' + userName + ', welcome to Lg Slack channel! Have fun :)' + req
   };
 
-  if(userName !== 'rentbot' && req.channel.is_im === true){
+  if(userName !== 'rentbot'){
     return res.status(200).json(botPayload);
   }else{
     return res.status(200).end();
