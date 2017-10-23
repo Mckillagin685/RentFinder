@@ -29,10 +29,11 @@ if(userName !== 'rentbot' && req.body.channel_name === 'directmessage'){
 app.post('/sayback', function(req, res, next){
   var userName = req.body.user_name;
   var requestText = req.body.text; 
-  var callbackId = req.body.callback_id; 
+  var callbackId = req.body.callback_id;
+  var payload =JSON.parse(req.body.payload); 
   
   // console.log('Request ', req.body)
-  console.log(JSON.parse(req.body.payload))
+  console.log(payload.user)
 
   var botPayload= {
     text: 'If you are seeing this the route sayback has run.... yay!!!'
