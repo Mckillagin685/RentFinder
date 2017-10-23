@@ -1,7 +1,7 @@
 {
   "name": "rentfinder",
   "version": "1.0.0",
-  "description": "Slack app to find and notify you about Rentable living arrangementswith a given search criteria.",
+  "description": "Slack app to find and notify you about Rentable living arrangements with a given search criteria.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
