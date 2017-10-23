@@ -32,7 +32,7 @@ app.post('/sayback', function(req, res, next){
   var callbackId = req.body.callback_id; 
   
   // console.log('Request ', req.body)
-  console.log(req.body.payload.user)
+  console.log(req.body.payload.callback_id)
 
   var botPayload= {
     text: 'If you are seeing this the route sayback has run.... yay!!!'
