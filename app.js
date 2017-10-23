@@ -18,7 +18,7 @@ app.post('/hello', function(req, res, next){
     text: 'Hello ' + userName + ', welcome to Lg Slack channel! Have fun :)'
   };
 
-  if(userName !== 'rentbot' && req.is_im === true){
+  if(userName !== 'rentbot' && req.channel.is_im === true){
     return res.status(200).json(botPayload);
   }else{
     return res.status(200).end();
