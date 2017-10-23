@@ -32,11 +32,11 @@ app.post('/sayback', function(req, res, next){
   var callbackId = req.body.callback_id; 
   console.log('log this')
   var botPayload= {
-    user_name: userName,
+    username: 'Rent bot',
     text: 'If you are seeing this the route sayback has run.... yay!!! request Text: ' + requestText + ' callback ID: ' + callbackId
   };
 
-if(req.body.channel_name === 'directmessage'){
+if(userName !== 'rentbot' && req.body.channel_name === 'directmessage'){
   return res.status(200).json(botPayload);
 }else{
   return res.status(200).end();
