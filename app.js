@@ -12,11 +12,18 @@ app.listen(port, function(){
   console.log('Listening on port ' + port);
 })
 
-// app.post('/hello', function(req, res, next){
-//   var userName = req.body.user_name; 
-//   var botPayload= {
-//     text: 'Hello ' + userName + ', welcome to Lg Slack channel! Have fun :) '
-//   };
+app.post('/hello', function(req, res, next){
+  var userName = req.body.user_name; 
+  var botPayload= {
+    text: 'Hello ' + userName + ', welcome to Lg Slack channel! Have fun :) '
+  };
+
+if(userName !== 'rentbot' && req.body.channel_name === 'directmessage'){
+  return res.status(200).json(botPayload);
+}else{
+  return res.status(200).end();
+}
+});
 
 app.post('/createfilter', function(req, res, next){
   var userName = req.body.user_name; 
