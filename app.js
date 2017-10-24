@@ -33,29 +33,28 @@ app.post('/sayback', function(req, res, next){
   var payload = JSON.parse(req.body.payload);
   var userName = payload.user.name
   var campus = payload.actions[0].value;
-  let campusText = "";
 
   switch (true){
     case campus === 78701:
-      campusText = "Austin, TX"
+      let campusText = "Austin, TX"
       break;
     case campus === 80302:
-      campusText = "Boulder, CO"
+      let campusText = "Boulder, CO"
       break;
     case campus === 80202:
-      campusText = "Denver, CO (Platte)"
+      let campusText = "Denver, CO (Platte)"
       break;
     case campus === 80204:
-      campusText = "Denver, CO (Golden Triangle)"
+      let campusText = "Denver, CO (Golden Triangle)"
       break;
     case campus === 10013:
-      campusText = "New York, NY"
+      let campusText = "New York, NY"
       break;
     case campus === 85004:
-      campusText = "Phoenix, AZ"
+      let campusText = "Phoenix, AZ"
       break;
     case campus === 94105:
-      campusText = "San Francisco, CA"
+      let campusText = "San Francisco, CA"
       break;
   }
   
