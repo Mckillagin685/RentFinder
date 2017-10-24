@@ -13,7 +13,7 @@ function createFilterPrompt(incomingPayload){
       var campus = parseInt(incomingPayload.actions[0].value);
       newFilter = location(campus)
       payload = payloads.bed
-      payload.attachments.filter = filter
+      payload.attachments.filter = newFilter
       console.log(payload)
       break;
     case callbackId === "beds":
