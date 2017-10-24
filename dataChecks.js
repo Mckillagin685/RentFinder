@@ -1,7 +1,7 @@
 
 
 function location(campus){
-  console.log(typeof campus)
+var campusText = "";
   switch (true){
     case campus === 78701:
       campusText = "Austin, TX";
@@ -31,6 +31,7 @@ function location(campus){
       throw('error campus is either not defined or not applicable')
       break;
   }
+  return campusText;
 }
 
 

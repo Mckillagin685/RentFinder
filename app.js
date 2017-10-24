@@ -36,11 +36,7 @@ app.post('/sayback', function(req, res, next){
   var payload = JSON.parse(req.body.payload);
   var userName = payload.user.name
   var campus = parseInt(payload.actions[0].value);
-  let campusText = "";
-  
-  console.log(campus)
-
-  dataChecks.location(campus);
+  let campusText = dataChecks.location(campus);
 
   var botPayload= {
     text: 'You have chosen ' + campusText
