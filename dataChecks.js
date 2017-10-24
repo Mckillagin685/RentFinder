@@ -98,5 +98,6 @@ function bedOrBath(b){
 
 module.exports = {
   location,
-  bedOrBath
+  bedOrBath,
+  createFilterPrompt
 }
