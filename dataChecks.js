@@ -1,40 +1,99 @@
+var payloads = require("./payloads")
 
 
-function location(campus){
-var campusText = "";
-  switch (true){
-    case campus === 78701:
-      campusText = "Austin, TX";
+function createFilterPrompt(callbackId, incomingPayload){
+  var oldFilter;
+  var filter;
+  var payload;
+
+  switch(true){
+    case callbackId === "location":
+      newFilter = location(incomingPayload)
+      payload = payloads.bed
+      payload.attachments.filter = filter
       break;
-    case campus === 80302:
-      campusText = "Boulder, CO";
+    case callbackId === "beds":
+      console.log(incomingPayload)
+      // payload = payloads.bath
+      // payload.attachments.filter = filter
       break;
-    case campus === 80202:
-      campusText = "Denver, CO (Platte)";
+    case callbackId === "baths":
+      payload = payloads.minRent
+      payload.attachments.filter = filter
       break;
-    case campus === 80204:
-      campusText = "Denver, CO (Golden Triangle)";
+    case callbackId === "minRent":
+      payload = payloads.maxRent
+      payload.attachments.filter = filter
       break;
-    case campus === 10013:
-      campusText = "New York, NY";
+    case callbackId === "maxRent":
+      payload = payloads.pet
+      payload.attachments.filter = filter
       break;
-    case campus === 85004:
-      campusText = "Phoenix, AZ";
+    case callbackId === "pet":
+      payload = payloads.photo
+      payload.attachments.filter = filter
       break;
-    case campus === 94105:
-      campusText = "San Francisco, CA";
-      break;
-    case campus === 98104:
-      campusText = "Seattle, WA";
+    case callbackId === "photo":
+      console.log(filter)
       break;
     default:
-      throw('error campus is either not defined or not applicable')
+      throw("Something went wrong")
       break;
   }
-  return campusText;
 }
+
+function location(campus){
+var result = "";
+  switch (true){
+    case campus === 78701:
+      result = {city:"austin", state:"texas", zip:"78701"};
+      break;
+    case campus === 80302:
+      result = {city:"boulder", state:"colorado", zip:"80302"};
+      break;
+    case campus === 80202:
+      result = {city:"denver", state:"colorado", zip:"80202"};
+      break;
+    case campus === 80204:
+      result = {city:"denver", state:"colorado", zip:"80204"};
+      break;
+    case campus === 10013:
+      result = {city:"new-york",state:"new-york", zip:"10013"};
+      break;
+    case campus === 85004:
+      result = {city:"phoenix", state:"arizona", zip:"85004"};
+      break;
+    case campus === 94105:
+      result = {city:"san-francisco", state:"california", zip:"94105"};
+      break;
+    case campus === 98104:
+      result = {city:"seattle", state:"washington", zip:"98104"};
+      break;
+    default:
+      throw('error campus is either undefined or not applicable')
+      break;
+  }
+  return result;
+}
+
+function bedOrBath(b){
+  var result = "";
+    switch (true){
+      case parseInt(b) === 0: 
+        result = 0;
+        break;
+      case typeof parseInt(b) === "number":
+        result = b;
+        break;
+      default:
+        throw('error bed or bath is either undefined or not applicable')
+        break;
+    }
+    return result;
+  }
 
 
 module.exports = {
-  location
+  location,
+  bedOrBath
 }

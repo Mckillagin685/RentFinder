@@ -118,7 +118,7 @@ var bath = {
       {
           "text": "Choose number of bathrooms",
           "fallback": "You are unable to choose number of bathrooms",
-          "callback_id": "beds",
+          "callback_id": "baths",
           "color": "#3AA3E3",
           "attachment_type": "default",
           "actions": [
@@ -181,7 +181,7 @@ var minRent = {
       {
           "text": "Choose the minimum rent",
           "fallback": "You are unable to choose the minimum rent",
-          "callback_id": "minPrice",
+          "callback_id": "minRent",
           "color": "#3AA3E3",
           "attachment_type": "default",
           "actions": [
@@ -260,7 +260,7 @@ var maxRent = {
       {
           "text": "Choose the maximum rent",
           "fallback": "You are unable to choose the maximum rent",
-          "callback_id": "maxPrice",
+          "callback_id": "maxRent",
           "color": "#3AA3E3",
           "attachment_type": "default",
           "actions": [

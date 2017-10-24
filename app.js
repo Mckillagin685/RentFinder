@@ -29,19 +29,17 @@ if(userName !== 'rentbot' && req.body.channel_name === 'directmessage'){
 });
 
 app.post('/sayback', function(req, res, next){
-  var userName = req.body.user_name;
-  var requestText = req.body.text; 
-  var callbackId = req.body.callback_id;
   var payload = JSON.parse(req.body.payload);
+  var callbackId = payload.callback_id;
   var userName = payload.user.name
   var campus = parseInt(payload.actions[0].value);
-  let campusText = dataChecks.location(campus);
+  var botPayload;
 
-  console.log(payload.callback_id)
-
-  var botPayload= {
-    text: 'You have chosen ' + campusText
-  };
+  if(callbackId === "location"){
+    botPayload = dataChecks.location(callbackId, campus)
+  }else{
+    botPayload = dataChecks.location(callbackId, payload) 
+  }
 
   if(userName !== 'rentbot'){
     return res.status(200).json(botPayload);
