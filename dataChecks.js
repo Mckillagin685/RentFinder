@@ -1,6 +1,7 @@
 
 
 function location(campus){
+  console.log(campus)
   switch (true){
     case campus === 78701:
       campusText = "Austin, TX";
