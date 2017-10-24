@@ -32,12 +32,36 @@ app.post('/sayback', function(req, res, next){
   var callbackId = req.body.callback_id;
   var payload = JSON.parse(req.body.payload);
   var userName = payload.user.name
+  var campus = payload.actions[0].value;
+
+  switch (true){
+    case campus === 78701:
+      campus = "Austin, TX"
+      break;
+    case campus === 80302:
+      campus = "Boulder, CO"
+      break;
+    case campus === 80202:
+      campus = "Denver, CO (Platte)"
+      break;
+    case campus === 80204:
+      campus = "Denver, CO (Golden Triangle)"
+      break;
+    case campus === 10013:
+      campus = "New York, NY"
+      break;
+    case campus === 85004:
+      campus = "Phoenix, AZ"
+      break;
+    case campus === 94105:
+      campus = "San Francisco, CA"
+      break;
+  }
   
-  // console.log('Request ', req.body)
   console.log(payload)
 
   var botPayload= {
-    text: 'If you are seeing this the route sayback has run.... yay!!!'
+    text: 'You chose ' + campus
   };
 
   return res.status(200).json(botPayload);
