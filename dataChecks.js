@@ -10,7 +10,7 @@ function createFilterPrompt(incomingPayload){
   switch(true){
     case callbackId === "location":
       var campus = parseInt(incomingPayload.actions[0].value);
-      console.log(campus)
+      console.log(typeof campus)
       // newFilter = location(campus)
       // payload = payloads.bed
       // payload.attachments.filter = filter
