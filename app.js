@@ -52,8 +52,6 @@ app.post('/createfilter', function(req, res, next){
   var userName = req.body.user_name; 
   var botPayload = payloads.location
 
-  console.log(req.body)
-
   if(userName !== 'rentbot' && req.body.channel_name === 'directmessage'){
     return res.status(200).json(botPayload);
   }else{
