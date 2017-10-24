@@ -38,8 +38,8 @@ app.post('/sayback', function(req, res, next){
   var campus = payload.actions[0].value;
   let campusText = "";
 
+  dataChecks.location(campus);
 
-  
   console.log(payload)
 
   var botPayload= {
