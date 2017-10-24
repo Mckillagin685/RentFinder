@@ -17,7 +17,6 @@ app.listen(port, function(){
 
 app.post('/hello', function(req, res, next){
   var userName = req.body.user_name; 
-  console.log('log this')
   var botPayload= {
     text: 'Hello ' + userName + ', welcome to Lg Slack channel! Have fun :) '
   };
@@ -38,11 +37,11 @@ app.post('/sayback', function(req, res, next){
   var campus = parseInt(payload.actions[0].value);
   let campusText = dataChecks.location(campus);
 
+  console.log(callbackId)
+
   var botPayload= {
     text: 'You have chosen ' + campusText
   };
-
-  // return res.status(200).json(botPayload);
 
   if(userName !== 'rentbot'){
     return res.status(200).json(botPayload);
