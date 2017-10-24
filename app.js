@@ -54,37 +54,54 @@ app.post('/createfilter', function(req, res, next){
     "text": "Would you like to play a game?",
     "attachments": [
         {
-            "text": "Choose a game to play",
-            "fallback": "You are unable to choose a game",
+            "text": "Choose your current campus",
+            "fallback": "You are unable to choose a campus",
             "callback_id": "sayback",
             "color": "#3AA3E3",
             "attachment_type": "default",
             "actions": [
                 {
-                    "name": "game",
-                    "text": "Chess",
+                    "name": "campus",
+                    "text": "Austin,TX",
                     "type": "button",
-                    "value": "chess"
+                    "value": "78701"
                 },
                 {
-                    "name": "game",
-                    "text": "Falken's Maze",
+                    "name": "campus",
+                    "text": "Boulder,CO",
                     "type": "button",
-                    "value": "maze"
+                    "value": "80302"
                 },
                 {
-                    "name": "game",
-                    "text": "Thermonuclear War",
-                    "style": "danger",
+                    "name": "campus",
+                    "text": "Denver,CO (Platte)",
                     "type": "button",
-                    "value": "war",
-                    "confirm": {
-                        "title": "Are you sure?",
-                        "text": "Wouldn't you prefer a good game of chess?",
-                        "ok_text": "Yes",
-                        "dismiss_text": "No"
-                    }
-                }
+                    "value": "80202"
+                },
+                {
+                    "name": "campus",
+                    "text": "Denver,CO (Golden Triangle)",
+                    "type": "button",
+                    "value": "80204"
+                },
+                {
+                    "name": "campus",
+                    "text": "New York,NY",
+                    "type": "button",
+                    "value": "10013"
+                },
+                {
+                    "name": "campus",
+                    "text": "Phoenix,AZ",
+                    "type": "button",
+                    "value": "85004"
+                },
+                {
+                    "name": "campus",
+                    "text": "San Francisco,CA",
+                    "type": "button",
+                    "value": "94105"
+                },
             ]
         }
     ]
