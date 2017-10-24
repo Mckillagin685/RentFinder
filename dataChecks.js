@@ -6,6 +6,7 @@ function createFilterPrompt(incomingPayload){
   var oldFilter;
   var filter;
   var payload;
+  console.log(callbackId)
 
   switch(true){
     case callbackId === "location":
