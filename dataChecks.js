@@ -14,6 +14,7 @@ function createFilterPrompt(incomingPayload){
       newFilter = location(campus)
       payload = payloads.bed
       payload.attachments.filter = filter
+      console.log(payload)
       break;
     case callbackId === "beds":
       console.log(incomingPayload)
