@@ -34,5 +34,5 @@ function location(campus){
 
 
 module.exports = {
-  location
+  location()
 }
