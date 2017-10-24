@@ -1,3 +1,6 @@
+var dataChecks = require('./dataChecks');
+var payloads = require('./payloads');
+
 var express = require('express');
 var bodyParser = require('body-parser');
 
@@ -32,40 +35,15 @@ app.post('/sayback', function(req, res, next){
   var callbackId = req.body.callback_id;
   var payload = JSON.parse(req.body.payload);
   var userName = payload.user.name
-  var campus = parseInt(payload.actions[0].value);
+  var campus = payload.actions[0].value;
   let campusText = "";
 
-  switch (true){
-    case campus === 78701:
-      campusText = "Austin, TX"
-      break;
-    case campus === 80302:
-      campusText = "Boulder, CO"
-      break;
-    case campus === 80202:
-      campusText = "Denver, CO (Platte)"
-      break;
-    case campus === 80204:
-      campusText = "Denver, CO (Golden Triangle)"
-      break;
-    case campus === 10013:
-      campusText = "New York, NY"
-      break;
-    case campus === 85004:
-      campusText = "Phoenix, AZ"
-      break;
-    case campus === 94105:
-      campusText = "San Francisco, CA"
-      break;
-    default:
-      throw('error Campus is either not defined or not applicable')
-      break;
-  }
+
   
   console.log(payload)
 
   var botPayload= {
-    text: 'You chose ' + campusText
+    text: 'You have chosen ' + campusText
   };
 
   return res.status(200).json(botPayload);
@@ -79,62 +57,7 @@ if(userName !== 'rentbot' && req.body.channel_name === 'directmessage'){
 
 app.post('/createfilter', function(req, res, next){
   var userName = req.body.user_name; 
-  var botPayload= {
-    "text": "What campus are you attending?",
-    "attachments": [
-        {
-            "text": "Choose your current campus",
-            "fallback": "You are unable to choose a campus",
-            "callback_id": "sayback",
-            "color": "#3AA3E3",
-            "attachment_type": "default",
-            "actions": [
-                {
-                    "name": "campus",
-                    "text": "Austin,TX",
-                    "type": "button",
-                    "value": "78701"
-                },
-                {
-                    "name": "campus",
-                    "text": "Boulder,CO",
-                    "type": "button",
-                    "value": "80302"
-                },
-                {
-                    "name": "campus",
-                    "text": "Denver,CO (Platte)",
-                    "type": "button",
-                    "value": "80202"
-                },
-                {
-                    "name": "campus",
-                    "text": "Denver,CO (Golden Triangle)",
-                    "type": "button",
-                    "value": "80204"
-                },
-                {
-                    "name": "campus",
-                    "text": "New York,NY",
-                    "type": "button",
-                    "value": "10013"
-                },
-                {
-                    "name": "campus",
-                    "text": "Phoenix,AZ",
-                    "type": "button",
-                    "value": "85004"
-                },
-                {
-                    "name": "campus",
-                    "text": "San Francisco,CA",
-                    "type": "button",
-                    "value": "94105"
-                },
-            ]
-        }
-    ]
-  };
+  var botPayload = payloads.location
 
   console.log(req.body)
 
