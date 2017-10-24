@@ -43,6 +43,7 @@ function createFilterPrompt(incomingPayload){
       throw("Something went wrong")
       break;
   }
+  return payload
 }
 
 function location(campus){
