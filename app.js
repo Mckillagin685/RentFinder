@@ -62,7 +62,7 @@ app.post('/sayback', function(req, res, next){
   console.log(payload)
 
   var botPayload= {
-    text: 'You chose ' + campus
+    text: 'You chose ' + campusText
   };
 
   return res.status(200).json(botPayload);
