@@ -30,10 +30,11 @@ app.post('/sayback', function(req, res, next){
   var userName = req.body.user_name;
   var requestText = req.body.text; 
   var callbackId = req.body.callback_id;
-  var payload =JSON.parse(req.body.payload); 
+  var payload = JSON.parse(req.body.payload);
+  var userName = payload.user.name
   
   // console.log('Request ', req.body)
-  console.log(payload.user)
+  console.log(payload)
 
   var botPayload= {
     text: 'If you are seeing this the route sayback has run.... yay!!!'
@@ -51,7 +52,7 @@ if(userName !== 'rentbot' && req.body.channel_name === 'directmessage'){
 app.post('/createfilter', function(req, res, next){
   var userName = req.body.user_name; 
   var botPayload= {
-    "text": "Would you like to play a game?",
+    "text": "What campus are you attending?",
     "attachments": [
         {
             "text": "Choose your current campus",
