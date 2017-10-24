@@ -1,7 +1,8 @@
 var payloads = require("./payloads")
 
 
-function createFilterPrompt(callbackId, incomingPayload){
+function createFilterPrompt(incomingPayload){
+  var callbackId = incomingPayload.callback_id;
   var oldFilter;
   var filter;
   var payload;

@@ -30,15 +30,10 @@ if(userName !== 'rentbot' && req.body.channel_name === 'directmessage'){
 
 app.post('/sayback', function(req, res, next){
   var payload = JSON.parse(req.body.payload);
-  var callbackId = payload.callback_id;
   var userName = payload.user.name
   var botPayload;
 
-  if(callbackId === "location"){
-    botPayload = dataChecks.location(callbackId, payload)
-  }else{
-    botPayload = dataChecks.location(callbackId, payload) 
-  }
+    botPayload = dataChecks.createFilterPrompt(payload) 
 
   if(userName !== 'rentbot'){
     return res.status(200).json(botPayload);
