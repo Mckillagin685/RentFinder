@@ -37,7 +37,7 @@ app.post('/sayback', function(req, res, next){
   var campus = parseInt(payload.actions[0].value);
   let campusText = dataChecks.location(campus);
 
-  console.log(payload)
+  console.log(payload.callback_id)
 
   var botPayload= {
     text: 'You have chosen ' + campusText
