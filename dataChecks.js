@@ -27,7 +27,7 @@ function location(campus){
       campusText = "Seattle, WA";
       break;
     default:
-      throw('error Campus is either not defined or not applicable')
+      throw('error campus is either not defined or not applicable')
       break;
   }
 }
