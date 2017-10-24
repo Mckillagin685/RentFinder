@@ -42,14 +42,15 @@ app.post('/sayback', function(req, res, next){
     text: 'You have chosen ' + campusText
   };
 
-  return res.status(200).json(botPayload);
+  // return res.status(200).json(botPayload);
 
-if(userName !== 'rentbot' && req.body.channel_name === 'directmessage'){
-  return res.status(200).json(botPayload);
-}else{
-  return res.status(200).end();
-}
+  if(userName !== 'rentbot' && req.body.channel_name === 'directmessage'){
+    return res.status(200).json(botPayload);
+  }else{
+    return res.status(200).end();
+  }
 });
+
 
 app.post('/createfilter', function(req, res, next){
   var userName = req.body.user_name; 
