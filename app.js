@@ -32,7 +32,6 @@ app.post('/sayback', function(req, res, next){
   var payload = JSON.parse(req.body.payload);
   var callbackId = payload.callback_id;
   var userName = payload.user.name
-  var campus = parseInt(payload.actions[0].value);
   var botPayload;
 
   if(callbackId === "location"){

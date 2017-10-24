@@ -8,7 +8,8 @@ function createFilterPrompt(callbackId, incomingPayload){
 
   switch(true){
     case callbackId === "location":
-      newFilter = location(incomingPayload)
+      var campus = parseInt(incomingPayload.actions[0].value);
+      newFilter = location(campus)
       payload = payloads.bed
       payload.attachments.filter = filter
       break;
