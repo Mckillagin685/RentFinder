@@ -35,7 +35,7 @@ app.post('/sayback', function(req, res, next){
   var botPayload;
 
   if(callbackId === "location"){
-    botPayload = dataChecks.location(callbackId, campus)
+    botPayload = dataChecks.location(callbackId, payload)
   }else{
     botPayload = dataChecks.location(callbackId, payload) 
   }
