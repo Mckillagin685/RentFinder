@@ -57,6 +57,9 @@ app.post('/sayback', function(req, res, next){
     case campus === 94105:
       campusText = "San Francisco, CA"
       break;
+    default:
+      throw('error Campus is either not defined or not applicable')
+      break;
   }
   
   console.log(payload)
