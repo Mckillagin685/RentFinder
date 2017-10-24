@@ -32,7 +32,7 @@ app.post('/sayback', function(req, res, next){
   var callbackId = req.body.callback_id;
   var payload = JSON.parse(req.body.payload);
   var userName = payload.user.name
-  var campus = payload.actions[0].value;
+  var campus = parseInt(payload.actions[0].value);
   let campusText = "";
 
   switch (true){
