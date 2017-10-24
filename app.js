@@ -44,7 +44,7 @@ app.post('/sayback', function(req, res, next){
 
   // return res.status(200).json(botPayload);
 
-  if(userName !== 'rentbot' && req.body.channel_name === 'directmessage'){
+  if(userName !== 'rentbot'){
     return res.status(200).json(botPayload);
   }else{
     return res.status(200).end();
