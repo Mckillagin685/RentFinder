@@ -24,21 +24,25 @@ function createFilterPrompt(incomingPayload){
       // console.log(payload)
       break;
     case id === "beds":
-      newFilter.beds = incomingPayload.actions[0].value
+      newFilter.beds = bedOrBath(incomingPayload.actions[0].value)
       unstrungFilter = Object.assign(callbackId, newFilter)
       payload = payloads.bath
       payload.attachments[0].callback_id = JSON.stringify(unstrungFilter);
       break;
     case id === "baths":
-      console.log(incomingPayload)
-      payload = {
-        "text": "end of prompt" 
-      }
+      newFilter.baths = bedOrBath(incomingPayload.actions[0].value)
+      unstrungFilter = Object.assign(callbackId, newFilter)
+      payload = payloads.minRent
+      payload.attachments[0].callback_id = JSON.stringify(unstrungFilter);
       // payload = payloads.minRent
       // payload.attachments.filter = filter
       break;
     case id === "minRent":
-      payload = payloads.maxRent
+      console.log(incomingPayload)
+      payload = {
+        "text": "end of prompt" 
+      }
+      // payload = payloads.maxRent
       // payload.attachments.filter = filter
       break;
     case id === "maxRent":
