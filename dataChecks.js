@@ -10,7 +10,7 @@ function createFilterPrompt(incomingPayload){
   }
   var id = incomingPayload.actions[0].name;
   var newFilter = {};
-  var unparsedFilter;
+  var unstrungFilter;
   var payload;
   console.log("callbackId ", callbackId)
   console.log("id ", incomingPayload.actions[0].name)
@@ -27,7 +27,7 @@ function createFilterPrompt(incomingPayload){
       newFilter.beds = incomingPayload.actions[0].value
       unparsedFilter = Object.assign(callbackId, newFilter)
       payload = payloads.bath
-      payload.attachments.callback_id = JSON.parse(unparsedFilter);
+      payload.attachments.callback_id = JSON.stringify(unstrungFilter);
       break;
     case id === "baths":
       console.log(incomingPayload)
