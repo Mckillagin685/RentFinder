@@ -67,7 +67,6 @@ var bed = {
       {
           "text": "Choose number of bedrooms",
           "fallback": "You are unable to choose number of bedrooms",
-          // "callback_id": "beds",
           "color": "#3AA3E3",
           "attachment_type": "default",
           "actions": [
@@ -118,7 +117,6 @@ var bath = {
       {
           "text": "Choose number of bathrooms",
           "fallback": "You are unable to choose number of bathrooms",
-          // "callback_id": "baths",
           "color": "#3AA3E3",
           "attachment_type": "default",
           "actions": [
@@ -181,7 +179,6 @@ var minRent = {
       {
           "text": "Choose the minimum rent",
           "fallback": "You are unable to choose the minimum rent",
-          // "callback_id": "minRent",
           "color": "#3AA3E3",
           "attachment_type": "default",
           "actions": [
@@ -260,7 +257,6 @@ var maxRent = {
       {
           "text": "Choose the maximum rent",
           "fallback": "You are unable to choose the maximum rent",
-          // "callback_id": "maxRent",
           "color": "#3AA3E3",
           "attachment_type": "default",
           "actions": [
@@ -369,7 +365,6 @@ var pet = {
       {
           "text": "Click a button to choose",
           "fallback": "You are unable to choose",
-          // "callback_id": "pet_friendly",
           "color": "#3AA3E3",
           "attachment_type": "default",
           "actions": [
@@ -377,13 +372,13 @@ var pet = {
                   "name": "pet_friendly",
                   "text": "Pet friendly",
                   "type": "button",
-                  "value": true
+                  "value": "1"
               },
               {
                   "name": "pet_friendly",
                   "text": "Not Pet friendly",
                   "type": "button",
-                  "value": false
+                  "value": "0"
               }
           ]
       }
@@ -396,7 +391,6 @@ var photo = {
       {
           "text": "Click a button to choose",
           "fallback": "You are unable to choose",
-          // "callback_id": "photos",
           "color": "#3AA3E3",
           "attachment_type": "default",
           "actions": [
@@ -417,13 +411,38 @@ var photo = {
   ]
 }
 
+var notify = {
+  "text": "Would you like me to notify you every other hour IF I find something new?",
+  "attachments": [
+      {
+          "text": "Click a button to choose",
+          "fallback": "You are unable to choose",
+          "color": "#3AA3E3",
+          "attachment_type": "default",
+          "actions": [
+              {
+                  "name": "notify",
+                  "text": "Notify me",
+                  "type": "button",
+                  "value": true
+              },
+              {
+                  "name": "notify",
+                  "text": "Do not Notify me",
+                  "type": "button",
+                  "value": false
+              }
+          ]
+      }
+  ]
+}
+
 var minRentTryAgain = {
   "text": "Minimum price must be less than maximum price?",
   "attachments": [
       {
           "text": "Choose the minimum rent",
           "fallback": "You are unable to choose the minimum rent",
-          // "callback_id": "minRent",
           "color": "#3AA3E3",
           "attachment_type": "default",
           "actions": [
@@ -504,5 +523,6 @@ module.exports = {
   maxRent,
   pet,
   photo,
+  notify,
   minRentTryAgain
 }

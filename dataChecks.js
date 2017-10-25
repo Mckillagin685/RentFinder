@@ -12,8 +12,6 @@ function createFilterPrompt(incomingPayload){
   var newFilter = {};
   var unstrungFilter;
   var payload;
-  // console.log("callbackId ", callbackId)
-  // console.log("id ", incomingPayload.actions[0].name)
 
   switch(true){
     case id === "location":
@@ -21,7 +19,6 @@ function createFilterPrompt(incomingPayload){
       newFilter = location(campus)
       payload = payloads.bed
       payload.attachments[0].callback_id = JSON.stringify(newFilter)
-      // console.log(payload)
       break;
     case id === "beds":
       callbackId.beds = bedOrBath(incomingPayload.actions[0].value)
@@ -44,18 +41,26 @@ function createFilterPrompt(incomingPayload){
       payload = minOrMax(min, max, callbackId);
       break;
     case id === "pet_friendly":
-      console.log(incomingPayload)
-      payload = {
-        "text": "end of prompt" 
-      }
-      // payload = payloads.photo
-      // payload.attachments.filter = filter
+      callbackId.pet_friendly = trueOrFalse(incomingPayload.actions[0].value)
+      payload = payloads.photo
+      payload.attachments[0].callback_id = JSON.stringify(callbackId);
       break;
     case id === "photo":
-      payload = {
-        "text": "end of prompt" 
+      callbackId.photo = trueOrFalse(incomingPayload.actions[0].value)
+      payload = payloads.notify
+      payload.attachments[0].callback_id = JSON.stringify(callbackId);
+      break;
+    case id === "notify":
+      if(callbackId.notify === true){
+        payload = {
+          "text": "I'll let you know if I find something"
+        }
+      }else{
+        payload = {
+          "text": "If you wish to view results use the command /listResults"
+        }
       }
-      // console.log(filter)
+      console.log(callbackId)
       break;
     default:
       throw("Something went wrong")
@@ -124,6 +129,16 @@ function minOrMax(min, max, callbackId){
   }else{
     result = payloads.minRentTryAgain;
     result.attachments[0].callback_id = JSON.stringify(callbackId);
+  }
+  return result;
+}
+
+function trueOrFalse(value){
+  var result;
+  if(value === "1"){
+    result = true;
+  }else{
+    result = false;
   }
   return result;
 }
