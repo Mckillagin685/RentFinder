@@ -2,12 +2,17 @@ var payloads = require("./payloads")
 
 
 function createFilterPrompt(incomingPayload){
-  var callbackId = JSON.parse(incomingPayload.callback_id)
+  var callbackId;
+  if(incomingPayload.callback_id === "location"){
+    callbackId = incomingPayload.callback_id;
+  }else{
+    callbackId = JSON.parse(incomingPayload.callback_id);
+  }
   var id = incomingPayload.actions[0].name;
   var oldFilter;
   var filter;
   var payload;
-  console.log("callbackId ",callbackId)
+  console.log("callbackId ", callbackId)
   console.log("id ", incomingPayload.actions[0].name)
 
   switch(true){

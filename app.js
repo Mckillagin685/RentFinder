@@ -46,8 +46,8 @@ app.post('/sayback', function(req, res, next){
 
 
 app.post('/createfilter', function(req, res, next){
-  var userName = req.body.user_name; 
-  var botPayload = payloads.location
+  var userName = req.body.user_name;
+  var botPayload = payloads.location;
 
   if(userName !== 'rentbot' && req.body.channel_name === 'directmessage'){
     return res.status(200).json(botPayload);
