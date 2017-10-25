@@ -115,6 +115,7 @@ function bedOrBath(b){
   }
 
 function minOrMax(min, max, callbackId){
+  console.log(min, max)
   var result;
   if (min < max){
     callbackId.max = max;
