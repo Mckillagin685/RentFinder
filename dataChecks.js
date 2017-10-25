@@ -119,7 +119,7 @@ function minOrMax(min, max, callbackId){
   if (min < max){
     callbackId.max = max;
     result = payloads.pet;
-    payload.attachments[0].callback_id = JSON.stringify(callbackId);
+    result.attachments[0].callback_id = JSON.stringify(callbackId);
   }else{
     result = payloads.minRentTryAgain;
     result.attachments[0].callback_id = JSON.stringify(callbackId);
