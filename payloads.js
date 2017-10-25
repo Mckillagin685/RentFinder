@@ -67,7 +67,7 @@ var bed = {
       {
           "text": "Choose number of bedrooms",
           "fallback": "You are unable to choose number of bedrooms",
-          "callback_id": "beds",
+          // "callback_id": "beds",
           "color": "#3AA3E3",
           "attachment_type": "default",
           "actions": [
@@ -118,7 +118,7 @@ var bath = {
       {
           "text": "Choose number of bathrooms",
           "fallback": "You are unable to choose number of bathrooms",
-          "callback_id": "baths",
+          // "callback_id": "baths",
           "color": "#3AA3E3",
           "attachment_type": "default",
           "actions": [
@@ -181,7 +181,7 @@ var minRent = {
       {
           "text": "Choose the minimum rent",
           "fallback": "You are unable to choose the minimum rent",
-          "callback_id": "minRent",
+          // "callback_id": "minRent",
           "color": "#3AA3E3",
           "attachment_type": "default",
           "actions": [
@@ -260,7 +260,7 @@ var maxRent = {
       {
           "text": "Choose the maximum rent",
           "fallback": "You are unable to choose the maximum rent",
-          "callback_id": "maxRent",
+          // "callback_id": "maxRent",
           "color": "#3AA3E3",
           "attachment_type": "default",
           "actions": [
@@ -369,7 +369,7 @@ var pet = {
       {
           "text": "Click a button to choose",
           "fallback": "You are unable to choose",
-          "callback_id": "pet_friendly",
+          // "callback_id": "pet_friendly",
           "color": "#3AA3E3",
           "attachment_type": "default",
           "actions": [
@@ -396,7 +396,7 @@ var photo = {
       {
           "text": "Click a button to choose",
           "fallback": "You are unable to choose",
-          "callback_id": "photos",
+          // "callback_id": "photos",
           "color": "#3AA3E3",
           "attachment_type": "default",
           "actions": [
