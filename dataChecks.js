@@ -2,7 +2,7 @@ var payloads = require("./payloads")
 
 
 function createFilterPrompt(incomingPayload){
-  var callbackId = incomingPayload.callback_id;
+  var callbackId = JSON.parse(incomingPayload.callback_id)[0] || incomingPayload.callback_id
   var oldFilter;
   var filter;
   var payload;
@@ -13,7 +13,7 @@ function createFilterPrompt(incomingPayload){
       var campus = parseInt(incomingPayload.actions[0].value);
       newFilter = location(campus)
       payload = payloads.bed
-      payload.attachments.filter = newFilter
+      payload.attachments[0].callback_id = JSON.stringify(["beds",newFilter])
       console.log(payload)
       break;
     case callbackId === "beds":
