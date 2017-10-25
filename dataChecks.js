@@ -43,7 +43,7 @@ function createFilterPrompt(incomingPayload){
       let min = callbackId.min
       payload = minOrMax(min, max, callbackId);
       break;
-    case id === "pet":
+    case id === "pet_friendly":
       console.log(incomingPayload)
       payload = {
         "text": "end of prompt" 
