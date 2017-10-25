@@ -38,7 +38,7 @@ function createFilterPrompt(incomingPayload){
       // payload.attachments.filter = filter
       break;
     case id === "minRent":
-      console.log(incomingPayload.attachments)
+      console.log(incomingPayload)
       payload = {
         "text": "end of prompt" 
       }
