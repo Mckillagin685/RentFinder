@@ -14,16 +14,16 @@ function createFilterPrompt(incomingPayload){
       newFilter = location(campus)
       payload = payloads.bed
       payload.attachments[0].callback_id = JSON.stringify(["beds",newFilter])
-      console.log(payload)
+      // console.log(payload)
       break;
     case callbackId === "beds":
       console.log(incomingPayload)
-      // payload = payloads.bath
-      // payload.attachments.filter = filter
+      payload = payloads.bath
+      payload.attachments.filter = filter
       break;
     case callbackId === "baths":
-      payload = payloads.minRent
-      payload.attachments.filter = filter
+      // payload = payloads.minRent
+      // payload.attachments.filter = filter
       break;
     case callbackId === "minRent":
       payload = payloads.maxRent
