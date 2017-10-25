@@ -24,33 +24,31 @@ function createFilterPrompt(incomingPayload){
       // console.log(payload)
       break;
     case id === "beds":
-      newFilter.beds = bedOrBath(incomingPayload.actions[0].value)
-      unstrungFilter = Object.assign(callbackId, newFilter)
+      callbackId.beds = bedOrBath(incomingPayload.actions[0].value)
       payload = payloads.bath
-      payload.attachments[0].callback_id = JSON.stringify(unstrungFilter);
+      payload.attachments[0].callback_id = JSON.stringify(callbackId);
       break;
     case id === "baths":
-      newFilter.baths = bedOrBath(incomingPayload.actions[0].value)
-      unstrungFilter = Object.assign(callbackId, newFilter)
-      payload = payloads.minRent
-      payload.attachments[0].callback_id = JSON.stringify(unstrungFilter);
-      // payload = payloads.minRent
-      // payload.attachments.filter = filter
+      callbackId.baths = bedOrBath(incomingPayload.actions[0].value);
+      payload = payloads.minRent;
+      payload.attachments[0].callback_id = JSON.stringify(callbackId);
       break;
     case id === "minRent":
-      console.log(incomingPayload.actions[0].selected_options[0].value)
+      callbackId.min = incomingPayload.actions[0].selected_options[0].value;
+      payload = payloads.maxRent;
+      payload.attachments[0].callback_id = JSON.stringify(callbackId);
+      break;
+    case id === "maxRent":
+      let max = incomingPayload.actions[0].selected_options[0].value
+      let min = callbackId.min
+      payload = minOrMax(min, max, callbackId);
+      break;
+    case id === "pet":
+      console.log(incomingPayload)
       payload = {
         "text": "end of prompt" 
       }
-      // payload = payloads.maxRent
-      // payload.attachments.filter = filter
-      break;
-    case id === "maxRent":
-      payload = payloads.pet
-      // payload.attachments.filter = filter
-      break;
-    case id === "pet":
-      payload = payloads.photo
+      // payload = payloads.photo
       // payload.attachments.filter = filter
       break;
     case id === "photo":
@@ -115,6 +113,19 @@ function bedOrBath(b){
     }
     return result;
   }
+
+function minOrMax(min, max, callbackId){
+  var result;
+  if (min < max){
+    callbackId.max = max;
+    result = payloads.pet;
+    payload.attachments[0].callback_id = JSON.stringify(callbackId);
+  }else{
+    result = payloads.minRentTryAgain;
+    payload.attachments[0].callback_id = JSON.stringify(callbackId);
+  }
+  return result;
+}
 
 
 module.exports = {

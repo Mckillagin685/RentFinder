@@ -417,6 +417,85 @@ var photo = {
   ]
 }
 
+var minRentTryAgain = {
+  "text": "Minimum price must be less than maximum price?",
+  "attachments": [
+      {
+          "text": "Choose the minimum rent",
+          "fallback": "You are unable to choose the minimum rent",
+          // "callback_id": "minRent",
+          "color": "#3AA3E3",
+          "attachment_type": "default",
+          "actions": [
+            {
+              "name": "minRent",
+              "text": "Pick a min price...",
+              "type": "select",
+              "options": [
+                {
+                  "text": "$250",
+                  "value": 250
+                },
+                {
+                  "text": "$500",
+                  "value": 500
+                },
+                {
+                  "text": "$750",
+                  "value": 750
+                },
+                {
+                  "text": "$1000",
+                  "value": 1000
+                },
+                {
+                  "text": "$1250",
+                  "value": 1250
+                },
+                {
+                  "text": "$1500",
+                  "value": 1500
+                },
+                {
+                  "text": "$1750",
+                  "value": 1750
+                },
+                {
+                  "text": "$2000",
+                  "value": 2000
+                },
+                {
+                  "text": "$2500",
+                  "value": 2500
+                },
+                {
+                  "text": "$3000",
+                  "value": 3000
+                },
+                {
+                  "text": "$3500",
+                  "value": 3500
+                },
+                {
+                  "text": "$4000",
+                  "value": 4000
+                },
+                {
+                  "text": "$5000",
+                  "value": 5000
+                },
+                {
+                  "text": "$6000",
+                  "value": 6000
+                }
+  
+            ]
+            }
+          ]
+      }
+  ]
+}
+
 module.exports = {
   location,
   bed,
@@ -424,5 +503,6 @@ module.exports = {
   minRent,
   maxRent,
   pet,
-  photo
+  photo,
+  minRentTryAgain
 }
