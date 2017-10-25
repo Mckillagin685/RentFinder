@@ -9,49 +9,49 @@ var location = {
           "attachment_type": "default",
           "actions": [
               {
-                  "name": "campus",
+                  "name": "location",
                   "text": "Austin, TX",
                   "type": "button",
                   "value": 78701
               },
               {
-                  "name": "campus",
+                  "name": "location",
                   "text": "Boulder, CO",
                   "type": "button",
                   "value": 80302
               },
               {
-                  "name": "campus",
+                  "name": "location",
                   "text": "Denver, CO (Platte)",
                   "type": "button",
                   "value": 80202
               },
               {
-                  "name": "campus",
+                  "name": "location",
                   "text": "Denver, CO (Golden Triangle)",
                   "type": "button",
                   "value": 80204
               },
               {
-                  "name": "campus",
+                  "name": "location",
                   "text": "New York, NY",
                   "type": "button",
                   "value": 10013
               },
               {
-                  "name": "campus",
+                  "name": "location",
                   "text": "Phoenix, AZ",
                   "type": "button",
                   "value": 85004
               },
               {
-                  "name": "campus",
+                  "name": "location",
                   "text": "San Francisco, CA",
                   "type": "button",
                   "value": 94105
               },
               {
-                  "name": "campus",
+                  "name": "location",
                   "text": "San Francisco, CA",
                   "type": "button",
                   "value": 98104
@@ -186,7 +186,7 @@ var minRent = {
           "attachment_type": "default",
           "actions": [
             {
-              "name": "min_list",
+              "name": "minRent",
               "text": "Pick a min price...",
               "type": "select",
               "options": [
@@ -265,7 +265,7 @@ var maxRent = {
           "attachment_type": "default",
           "actions": [
             {
-              "name": "max_list",
+              "name": "maxRent",
               "text": "Pick a max price...",
               "type": "select",
               "options": [
@@ -374,13 +374,13 @@ var pet = {
           "attachment_type": "default",
           "actions": [
               {
-                  "name": "pets",
+                  "name": "pet_friendly",
                   "text": "Pet friendly",
                   "type": "button",
                   "value": true
               },
               {
-                  "name": "pets",
+                  "name": "pet_friendly",
                   "text": "Not Pet friendly",
                   "type": "button",
                   "value": false

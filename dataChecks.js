@@ -2,42 +2,47 @@ var payloads = require("./payloads")
 
 
 function createFilterPrompt(incomingPayload){
-  var callbackId = JSON.parse(incomingPayload.callback_id) || incomingPayload.callback_id
+  var callbackId = JSON.parse(incomingPayload.callback_id)
+  var id = incomingPayload.actions[0].name;
   var oldFilter;
   var filter;
   var payload;
-  console.log(callbackId)
+  console.log("callbackId ",callbackId)
+  console.log("id ", incomingPayload.actions[0].name)
 
   switch(true){
-    case callbackId === "location":
+    case id === "location":
       var campus = parseInt(incomingPayload.actions[0].value);
       newFilter = location(campus)
       payload = payloads.bed
-      // payload.attachments[0].callback_id = JSON.stringify(["beds",newFilter])
+      payload.attachments[0].callback_id = JSON.stringify(newFilter)
       // console.log(payload)
       break;
-    case callbackId === "beds":
+    case id === "beds":
       console.log(incomingPayload)
-      payload = payloads.bath
+      // payload = payloads.bath
+      payload = {
+        "text": "end of prompt" 
+      }
       // payload.attachments.filter = filter
       break;
-    case callbackId === "baths":
-      payload = payloads.minRent
+    case id === "baths":
+      // payload = payloads.minRent
       // payload.attachments.filter = filter
       break;
-    case callbackId === "minRent":
+    case id === "minRent":
       payload = payloads.maxRent
       // payload.attachments.filter = filter
       break;
-    case callbackId === "maxRent":
+    case id === "maxRent":
       payload = payloads.pet
       // payload.attachments.filter = filter
       break;
-    case callbackId === "pet":
+    case id === "pet":
       payload = payloads.photo
       // payload.attachments.filter = filter
       break;
-    case callbackId === "photo":
+    case id === "photo":
       payload = {
         "text": "end of prompt" 
       }
