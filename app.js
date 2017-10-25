@@ -32,14 +32,16 @@ app.post('/sayback', function(req, res, next){
   var payload = JSON.parse(req.body.payload);
   var userName = payload.user.name
   var botPayload;
+  
+  console.log(payload)
 
-    botPayload = dataChecks.createFilterPrompt(payload) 
+  // botPayload = dataChecks.createFilterPrompt(payload) 
 
-  if(userName !== 'rentbot'){
-    return res.status(200).json(botPayload);
-  }else{
-    return res.status(200).end();
-  }
+  // if(userName !== 'rentbot'){
+  //   return res.status(200).json(botPayload);
+  // }else{
+  //   return res.status(200).end();
+  // }
 });
 
 
