@@ -4,8 +4,7 @@ var location = {
       {
           "text": "Choose your current campus",
           "fallback": "You are unable to choose a campus",
-          "callback_id": "location",
-          "filter": {title:"here lies title"},
+          "callback_id": '["location", {title:"here lies title"}]',
           "color": "#3AA3E3",
           "attachment_type": "default",
           "actions": [
