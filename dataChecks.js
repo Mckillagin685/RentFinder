@@ -2,7 +2,7 @@ var payloads = require("./payloads")
 
 
 function createFilterPrompt(incomingPayload){
-  var callbackId = JSON.parse(incomingPayload.callback_id)[0] || incomingPayload.callback_id
+  var callbackId = JSON.parse(incomingPayload.callback_id) || incomingPayload.callback_id
   var oldFilter;
   var filter;
   var payload;
