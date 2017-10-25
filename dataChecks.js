@@ -13,6 +13,8 @@ function createFilterPrompt(incomingPayload){
   var unstrungFilter;
   var payload;
 
+  console.log(id)
+
   switch(true){
     case id === "location":
       var campus = parseInt(incomingPayload.actions[0].value);
