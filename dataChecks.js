@@ -47,7 +47,7 @@ function createFilterPrompt(incomingPayload){
       payload = payloads.photo
       payload.attachments[0].callback_id = JSON.stringify(callbackId);
       break;
-    case id === "photo":
+    case id === "photos":
       callbackId.photo = trueOrFalse(incomingPayload.actions[0].value)
       payload = payloads.notify
       payload.attachments[0].callback_id = JSON.stringify(callbackId);
