@@ -13,32 +13,35 @@ function createFilterPrompt(incomingPayload){
       var campus = parseInt(incomingPayload.actions[0].value);
       newFilter = location(campus)
       payload = payloads.bed
-      payload.attachments[0].callback_id = JSON.stringify(["beds",newFilter])
+      // payload.attachments[0].callback_id = JSON.stringify(["beds",newFilter])
       // console.log(payload)
       break;
     case callbackId === "beds":
       console.log(incomingPayload)
       payload = payloads.bath
-      payload.attachments.filter = filter
+      // payload.attachments.filter = filter
       break;
     case callbackId === "baths":
-      // payload = payloads.minRent
+      payload = payloads.minRent
       // payload.attachments.filter = filter
       break;
     case callbackId === "minRent":
       payload = payloads.maxRent
-      payload.attachments.filter = filter
+      // payload.attachments.filter = filter
       break;
     case callbackId === "maxRent":
       payload = payloads.pet
-      payload.attachments.filter = filter
+      // payload.attachments.filter = filter
       break;
     case callbackId === "pet":
       payload = payloads.photo
-      payload.attachments.filter = filter
+      // payload.attachments.filter = filter
       break;
     case callbackId === "photo":
-      console.log(filter)
+      payload = {
+        "text": "end of prompt" 
+      }
+      // console.log(filter)
       break;
     default:
       throw("Something went wrong")
