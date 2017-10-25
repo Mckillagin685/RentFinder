@@ -12,8 +12,8 @@ function createFilterPrompt(incomingPayload){
   var newFilter = {};
   var unstrungFilter;
   var payload;
-  console.log("callbackId ", callbackId)
-  console.log("id ", incomingPayload.actions[0].name)
+  // console.log("callbackId ", callbackId)
+  // console.log("id ", incomingPayload.actions[0].name)
 
   switch(true){
     case id === "location":
