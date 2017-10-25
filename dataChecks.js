@@ -53,6 +53,7 @@ function createFilterPrompt(incomingPayload){
       payload.attachments[0].callback_id = JSON.stringify(callbackId);
       break;
     case id === "notify":
+      callbackId.notify = trueOrFalse(incomingPayload.actions[0].value)
       if(callbackId.notify === true){
         payload = {
           "text": "I'll let you know if I find something"
