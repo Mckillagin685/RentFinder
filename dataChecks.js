@@ -25,7 +25,7 @@ function createFilterPrompt(incomingPayload){
       break;
     case id === "beds":
       newFilter.beds = incomingPayload.actions[0].value
-      unparsedFilter = Object.assign(callbackId, newFilter)
+      unstrungFilter = Object.assign(callbackId, newFilter)
       payload = payloads.bath
       payload.attachments.callback_id = JSON.stringify(unstrungFilter);
       break;
