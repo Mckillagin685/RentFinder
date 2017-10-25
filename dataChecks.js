@@ -9,8 +9,8 @@ function createFilterPrompt(incomingPayload){
     callbackId = JSON.parse(incomingPayload.callback_id);
   }
   var id = incomingPayload.actions[0].name;
-  var oldFilter;
-  var filter;
+  var newFilter = {};
+  var unparsedFilter;
   var payload;
   console.log("callbackId ", callbackId)
   console.log("id ", incomingPayload.actions[0].name)
@@ -24,14 +24,16 @@ function createFilterPrompt(incomingPayload){
       // console.log(payload)
       break;
     case id === "beds":
+      newFilter.beds = incomingPayload.actions[0].value
+      unparsedFilter = Object.assign(callbackId, newFilter)
+      payload = payloads.bath
+      payload.attachments.callback_id = JSON.parse(unparsedFilter);
+      break;
+    case id === "baths":
       console.log(incomingPayload)
-      // payload = payloads.bath
       payload = {
         "text": "end of prompt" 
       }
-      // payload.attachments.filter = filter
-      break;
-    case id === "baths":
       // payload = payloads.minRent
       // payload.attachments.filter = filter
       break;
