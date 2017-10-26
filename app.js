@@ -28,7 +28,7 @@ app.post('/api/startscan/:id', function(req, res, next){
 app.post('/wakeup', function(req, res, next){
   var userName = req.body.user_name; 
   var botPayload= {
-    text: 'I\'m up, I\'m up'
+    text: 'I\'m up, \n I\'m up'
   };
   console.log(req.body)
 
