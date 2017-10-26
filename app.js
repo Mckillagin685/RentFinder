@@ -30,7 +30,7 @@ app.post('/wakeup', function(req, res, next){
   var botPayload= {
     text: 'I\'m up, I\'m up'
   };
-  console.log('req.body')
+  console.log(req.body)
 
 if(userName !== 'rentbot' && req.body.channel_name === 'directmessage'){
   return res.status(200).json(botPayload);
