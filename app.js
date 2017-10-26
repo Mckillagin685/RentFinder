@@ -22,14 +22,17 @@ app.post('/api/startscan/:id', function(req, res, next){
   }else if(req.params.id !== '153j6kl63hsu38'){
     return res.status(401).end();
   }
+  
+
   return res.send(200).end();
 })
 
 app.post('/wakeup', function(req, res, next){
   var userName = req.body.user_name; 
   var botPayload= {
-    text: 'I\'m up, \n I\'m up'
+    'text': 'I\'m up, \n I\'m up'
   };
+
   console.log(req.body)
 
 if(userName !== 'rentbot' && req.body.channel_name === 'directmessage'){
@@ -42,7 +45,7 @@ if(userName !== 'rentbot' && req.body.channel_name === 'directmessage'){
 app.post('/hello', function(req, res, next){
   var userName = req.body.user_name; 
   var botPayload= {
-    "text": 'Hello ' + userName + ', \n \n welcome to Lg Slack channel! \n \n Have fun :) '
+    'text': 'Hello ' + userName + ', \n \n welcome to Lg Slack channel! \n \n Have fun :)'
   };
 
 if(userName !== 'rentbot' && req.body.channel_name === 'directmessage'){

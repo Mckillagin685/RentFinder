@@ -6,6 +6,5 @@ request('https://rent-finder.herokuapp.com/api/startscan/153j6kl63hsu38', (err, 
   if (err) {
     console.log(err);
   }
-
   console.log(res);
 });
