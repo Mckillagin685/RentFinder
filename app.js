@@ -42,7 +42,7 @@ if(userName !== 'rentbot' && req.body.channel_name === 'directmessage'){
 app.post('/hello', function(req, res, next){
   var userName = req.body.user_name; 
   var botPayload= {
-    text: 'Hello ' + userName + ', welcome to Lg Slack channel! Have fun :) '
+    "text": 'Hello ' + userName + ', \n \n welcome to Lg Slack channel! \n \n Have fun :) '
   };
 
 if(userName !== 'rentbot' && req.body.channel_name === 'directmessage'){
