@@ -17,6 +17,7 @@ app.listen(port, function(){
 })
 
 app.post('/api/startscan/:id', function(req, res, next){
+  var filters;
   if(err){
     return res.send(400).end();
   }else if(req.params.id !== '153j6kl63hsu38'){

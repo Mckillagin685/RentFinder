@@ -15,10 +15,8 @@ function createFilterPrompt(incomingPayload){
 
   switch(true){
     case id === "location":
-      console.log(incomingPayload)
       var campus = parseInt(incomingPayload.actions[0].value);
-      newFilter = Object.assign(gatherRequestInfo(incomingPayload.team, incomingPayload.channel), location(campus));
-      console.log(newFilter);
+      newFilter = Object.assign(gatherRequestInfo(incomingPayload.team, incomingPayload.channel, incomingPayload.user), location(campus), );
       payload = payloads.bed;
       payload.attachments[0].callback_id = JSON.stringify(newFilter)
       break;
@@ -146,15 +144,16 @@ function trueOrFalse(value){
   return result;
 }
 
-function gatherRequestInfo(team, channel){
+function gatherRequestInfo(team, channel, user){
   var result = {};
   result.team_id = team.id;
   result.team_domain = team.domain;
   result.channel_id = channel.id;
   result.channel_name = channel.name;
+  result.user_id = user.id;
+  result.user_name = user.name
   return result;
 }
-
 
 module.exports = {
   location,
