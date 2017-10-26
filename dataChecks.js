@@ -17,7 +17,7 @@ function createFilterPrompt(incomingPayload){
     case id === "location":
       console.log(incomingPayload)
       var campus = parseInt(incomingPayload.actions[0].value);
-      newFilter = Object.assign(location(campus), gatherRequestInfo(incomingPayload.team, incomingPayload.channel));
+      newFilter = Object.assign(gatherRequestInfo(incomingPayload.team, incomingPayload.channel), location(campus));
       console.log(newFilter);
       payload = payloads.bed;
       payload.attachments[0].callback_id = JSON.stringify(newFilter)
