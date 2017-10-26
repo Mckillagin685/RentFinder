@@ -22,7 +22,15 @@ app.post('/api/startscan/:id', function(req, res, next){
   }else if(req.params.id !== '153j6kl63hsu38'){
     return res.status(401).end();
   }
-  
+
+  // knex('filters')
+  //   .where('notify', true)
+  //   .then((filters) => {
+  //     return res.send(filters);
+  //   })
+  //   .catch((err) => {
+  //     next(err)
+  //   })
 
   return res.send(200).end();
 })

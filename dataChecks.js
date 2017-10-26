@@ -13,19 +13,18 @@ function createFilterPrompt(incomingPayload){
   var unstrungFilter;
   var payload;
 
-  console.log(id)
-
   switch(true){
     case id === "location":
       console.log(incomingPayload)
       var campus = parseInt(incomingPayload.actions[0].value);
-      newFilter = location(campus)
-      payload = payloads.bed
+      newFilter = Object.assign(location(campus), gatherRequestInfo(incomingPayload.team, incomingPayload.channel));
+      console.log(newFilter);
+      payload = payloads.bed;
       payload.attachments[0].callback_id = JSON.stringify(newFilter)
       break;
     case id === "beds":
       callbackId.beds = bedOrBath(incomingPayload.actions[0].value)
-      payload = payloads.bath
+      payload = payloads.bath;
       payload.attachments[0].callback_id = JSON.stringify(callbackId);
       break;
     case id === "baths":
@@ -40,17 +39,17 @@ function createFilterPrompt(incomingPayload){
       break;
     case id === "maxRent":
       let max = incomingPayload.actions[0].selected_options[0].value
-      let min = callbackId.min
+      let min = callbackId.min;
       payload = minOrMax(min, max, callbackId);
       break;
     case id === "pet_friendly":
       callbackId.pet_friendly = trueOrFalse(incomingPayload.actions[0].value)
-      payload = payloads.photo
+      payload = payloads.photo;
       payload.attachments[0].callback_id = JSON.stringify(callbackId);
       break;
     case id === "photos":
       callbackId.photo = trueOrFalse(incomingPayload.actions[0].value)
-      payload = payloads.notify
+      payload = payloads.notify;
       payload.attachments[0].callback_id = JSON.stringify(callbackId);
       break;
     case id === "notify":
@@ -144,6 +143,15 @@ function trueOrFalse(value){
   }else{
     result = false;
   }
+  return result;
+}
+
+function gatherRequestInfo(team, channel){
+  var result = {};
+  result.team_id = team.id;
+  result.team_domain = team.domain;
+  result.channel_id = channel.id;
+  result.channel_name = channel.name;
   return result;
 }
 
