@@ -376,7 +376,7 @@ var pet = {
               },
               {
                   "name": "pet_friendly",
-                  "text": "Not Pet friendly",
+                  "text": "both non pet and pet friendly",
                   "type": "button",
                   "value": "0"
               }

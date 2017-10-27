@@ -54,13 +54,21 @@ function createFilterPrompt(incomingPayload){
       callbackId.notify = trueOrFalse(incomingPayload.actions[0].value)
       if(callbackId.notify === true){
         payload = {
-          "text": "I'll let you know if I find something"
+          "text": "I will let you know if I find something"
         }
       }else{
         payload = {
           "text": "If you wish to view results use the command /listResults"
         }
       }
+      knex('filters')
+        .insert(callbackId, '*')
+        .catch((err) => {
+          console.log(err)
+          payload = {
+            "text": "Oops something when wrong on our end, \n \n please try again later."
+          }
+        })
       console.log(callbackId)
       break;
     default:
@@ -155,8 +163,17 @@ function gatherRequestInfo(team, channel, user){
   return result;
 }
 
+function linksToText (links){
+  var result = " ";
+  for(let link in links){
+    result += `${link}, \n`
+  }
+  return result
+}
+
 module.exports = {
   location,
   bedOrBath,
-  createFilterPrompt
+  createFilterPrompt,
+  linksToText
 }

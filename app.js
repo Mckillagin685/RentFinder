@@ -19,21 +19,20 @@ app.listen(port, function(){
 app.post('/api/startscan/:id', function(req, res, next){
   var filters;
   if(err){
-    return res.send(400).end();
+    return res.status(400).end();
   }else if(req.params.id !== '153j6kl63hsu38'){
     return res.status(401).end();
   }
+  knex('filters')
+    .where('notify', true)
+    .then((filters) => {
+      console.log(filters)
+    })
+    .catch((err) => {
+      next(err)
+    })
 
-  // knex('filters')
-  //   .where('notify', true)
-  //   .then((filters) => {
-  //     return res.send(filters);
-  //   })
-  //   .catch((err) => {
-  //     next(err)
-  //   })
-
-  return res.send(200).end();
+  return res.status(200).end();
 })
 
 app.post('/wakeup', function(req, res, next){
