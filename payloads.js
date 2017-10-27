@@ -539,5 +539,6 @@ module.exports = {
   pet,
   photo,
   notify,
-  minRentTryAgain
+  minRentTryAgain,
+  userNotify
 }

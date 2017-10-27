@@ -26,7 +26,20 @@ app.post('/api/startscan/:id', function(req, res, next){
   knex('filters')
     .where('notify', true)
     .then((filters) => {
-      console.log(filters)
+      for(let filter of filters){
+
+        let options = {
+          url: 'https://rent-finder.herokuapp.com/scheduledscraper',
+          body: JSON.stringify(filter)
+        }
+
+        request(options, (err, res, body) => {
+          if (err) {
+            console.log(err);
+          }
+          console.log(res);
+        })
+      }
     })
     .catch((err) => {
       next(err)

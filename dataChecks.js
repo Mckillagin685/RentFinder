@@ -1,4 +1,5 @@
 var payloads = require("./payloads")
+var knex = require("knex")
 
 
 function createFilterPrompt(incomingPayload){
