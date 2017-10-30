@@ -7,6 +7,7 @@ const request = require('request');
 const cheerio = require('cheerio');
 
 router.post('/scheduledscraper', (req, res, next) => {
+  console.log("in /scheduledscraper")
   var body = JSON.parse(req.body)
   var picsPets = ''
   if(body.pets === true){
@@ -28,13 +29,13 @@ router.post('/scheduledscraper', (req, res, next) => {
       })
       object.links = JSON.stringify(result);
       knex('links')
-        .where('filter_id', body.filter)
+        .where('filter_id', body.filter.id)
         .then((links) => {
           if(links && JSON.parse(links.links) !== result){
             
             let options = {
               url:'https://rent-finder.herokuapp.com/notifyuser',
-              body: JSON.parse([object, body])
+              body: body
             }
 
             request(options, (err, res, body) => {

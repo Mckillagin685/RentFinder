@@ -33,7 +33,7 @@ app.post('/api/startscan/:id', function(req, res, next){
           body: JSON.stringify(filter)
         }
 
-        request(options, (err, res, body) => {
+        request.post(options, (err, res, body) => {
           if (err) {
             console.log(err);
           }

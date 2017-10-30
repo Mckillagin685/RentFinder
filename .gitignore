@@ -3,3 +3,4 @@ node_modules
 linkreasearch
 playground
 .env
+dataConfig.js
