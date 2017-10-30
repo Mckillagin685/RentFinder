@@ -156,11 +156,11 @@ function trueOrFalse(value){
 
 function gatherRequestInfo(team, channel, user){
   var result = {};
-  result.team_id = team.id;
-  result.team_domain = team.domain;
-  result.channel_id = channel.id;
-  result.channel_name = channel.name;
-  result.user_id = user.id;
+  // result.team_id = team.id;
+  // result.team_domain = team.domain;
+  // result.channel_id = channel.id;
+  // result.channel_name = channel.name;
+  // result.user_id = user.id;
   result.user_name = user.name
   return result;
 }
