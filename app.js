@@ -81,6 +81,7 @@ app.post('/sayback', function(req, res, next){
   var userName = payload.user.name
   var botPayload;
 
+  console.log(payload)
   botPayload = dataChecks.createFilterPrompt(payload) 
 
   if(userName !== 'rentbot'){
