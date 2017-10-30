@@ -52,7 +52,7 @@ var location = {
               },
               {
                   "name": "location",
-                  "text": "Seattle",
+                  "text": "Seattle, WA",
                   "type": "button",
                   "value": 98104
               }
