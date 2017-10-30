@@ -4,6 +4,7 @@ var knex = require("knex")
 
 function createFilterPrompt(incomingPayload){
   var callbackId;
+  console.log(incomingPayload)
   if(incomingPayload.callback_id === "location"){
     callbackId = incomingPayload.callback_id;
   }else{
