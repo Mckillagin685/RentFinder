@@ -31,10 +31,10 @@ app.get('/api/startscan', function(req, res, next){
         }
 
         request.post(options, (err, res, body) => {
-          if (err) {
-            console.log(err);
+          if (!err && res.statusCode === 200) {
+            console.log(res.body);
           }
-          console.log(res.body);
+          console.log(err);
         })
       }
     })
