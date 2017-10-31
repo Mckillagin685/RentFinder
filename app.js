@@ -31,7 +31,7 @@ app.get('/api/startscan', function(req, res, next){
           if (err) {
             console.log(err);
           }
-          console.log(res);
+          console.log(res.body);
         })
       }
     })
