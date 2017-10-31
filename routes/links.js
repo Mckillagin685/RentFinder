@@ -37,7 +37,10 @@ router.post('/scheduledscraper', (req, res, next) => {
             
             let options = {
               url:'https://rent-finder.herokuapp.com/notifyuser',
-              body: body
+              headers: {
+                'Content-type':'application/json'
+              },
+              body: JSON.stringify(body)
             }
 
             request(options, (err, res, body) => {
