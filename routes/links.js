@@ -32,7 +32,7 @@ router.post('/scheduledscraper', (req, res, next) => {
       })
       object.links = JSON.stringify(result);
       knex('links')
-        .where('filter_id', body.filter.id)
+        .where('filter_id', body.id)
         .then((links) => {
           if(links && JSON.parse(links.links) !== result){
             
