@@ -18,7 +18,9 @@ router.post('/scheduledscraper', (req, res, next) => {
   }
   let result = [];
   let object = {filter_id: body.id};
-  request(`http://www.rentalsource.com/rentals/${body.state}/${body.city}/?min=${body.min}&max=${body.max}&beds=${body.beds}&baths=${body.baths}&types%5B%5D=hous&types%5B%5D=apt&types%5B%5D=town&types%5B%5D=cond&types%5B%5D=vac${picsPets}&pos=0&sortby=updated&orderby=asc`, (err, res, body) => {
+  let url = `http://www.rentalsource.com/rentals/${body.state}/${body.city}/?min=${body.min}&max=${body.max}&beds=${body.beds}&baths=${body.baths}&types%5B%5D=hous&types%5B%5D=apt&types%5B%5D=town&types%5B%5D=cond&types%5B%5D=vac${picsPets}&pos=0&sortby=updated&orderby=asc`
+  console.log(url);
+  request(url, (err, res, body) => {
     if(!err && res.statusCode == 200){
       var $ = cheerio.load(body);
       $('.ptb5 a[href]').each(function(){
