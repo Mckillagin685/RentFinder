@@ -2,7 +2,7 @@
 
 const request = require('request');
 
-request('https://rent-finder.herokuapp.com/api/startscan/153j6kl63hsu38', (err, res, body) => {
+request.get('https://rent-finder.herokuapp.com/api/startscan', (err, res, body) => {
   if (err) {
     console.log(err);
   }

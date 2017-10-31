@@ -3,7 +3,6 @@ var payloads = require('./payloads');
 var kenx = require('./knex')
 var express = require('express');
 var bodyParser = require('body-parser');
-var axios = require('axios');
 
 var app = express();
 var port = process.env.PORT || 1337;
@@ -16,13 +15,8 @@ app.listen(port, function(){
   console.log('Listening on port ' + port);
 })
 
-app.post('/api/startscan/:id', function(req, res, next){
+app.post('/api/startscan', function(req, res, next){
   var filters;
-  if(err){
-    return res.status(400).end();
-  }else if(req.params.id !== '153j6kl63hsu38'){
-    return res.status(401).end();
-  }
   knex('filters')
     .where('notify', true)
     .then((filters) => {
@@ -45,7 +39,7 @@ app.post('/api/startscan/:id', function(req, res, next){
       next(err)
     })
 
-  return res.status(200).end();
+    return res.status(200).end();
 })
 
 app.post('/wakeup', function(req, res, next){
