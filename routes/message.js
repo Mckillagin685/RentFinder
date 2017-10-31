@@ -4,7 +4,7 @@ const express = require('express');
 const router = express.Router();
 var knex = require('../knex');
 const request = require('request');
-const payloads = require('./payloads')
+const payloads = require('../payloads')
 
 router.post('/notifyuser', (req, res, next) => {
   var body = JSON.parse(req.body)
