@@ -48,7 +48,7 @@ app.get('/api/startscan', function(req, res, next){
           headers:{
             'Content-type':'application/json'
           },
-          body: JSON.stringify(filter)
+          body: filter
         }
 
         request.post(options, (err, res, body) => {
