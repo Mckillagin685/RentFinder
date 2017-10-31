@@ -33,9 +33,7 @@ app.use((err, _req, res, _next) => {
 
 app.get('/', function (req, res) {res.status(200).send('Hello World!'); });
 
-app.listen(port, function(){
-  console.log('Listening on port ' + port);
-})
+
 
 app.get('/api/startscan', function(req, res, next){
   var filters;
@@ -125,3 +123,7 @@ app.post('/createfilter', function(req, res, next){
     return res.status(200).end();
   }
 });
+
+app.listen(port, function(){
+  console.log('Listening on port ' + port);
+})

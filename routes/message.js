@@ -38,3 +38,5 @@ function callback(error , response, body){
   
   request.post(options, callback)
 })
+
+module.exports = router
