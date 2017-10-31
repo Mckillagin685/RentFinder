@@ -36,6 +36,7 @@ app.get('/', function (req, res) {res.status(200).send('Hello World!'); });
 
 
 app.get('/api/startscan', function(req, res, next){
+  console.log('in /api/startscan')
   var filters;
   knex('filters')
     .where('notify', true)
