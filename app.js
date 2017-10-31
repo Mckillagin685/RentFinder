@@ -51,6 +51,8 @@ app.get('/api/startscan', function(req, res, next){
           body: JSON.stringify(filter)
         }
 
+        console.log(options.body)
+
         request.post(options, (err, res, body) => {
           if (!err && res.statusCode === 200) {
             console.log('good');
