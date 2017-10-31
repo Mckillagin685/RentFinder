@@ -9,6 +9,12 @@ var port = process.env.PORT || 1337;
 
 app.use(bodyParser.urlencoded({extended: true}));
 
+const links = require('./routes/links');
+const message = require('./routes/message');
+
+app.use(links);
+app.use(message);
+
 app.get('/', function (req, res) {res.status(200).send('Hello World!'); });
 
 app.listen(port, function(){
@@ -34,10 +40,12 @@ app.get('/api/startscan', function(req, res, next){
           if (!err && res.statusCode === 200) {
             console.log('good');
             console.log(res.body);
+            return;
           }
           console.log('bad');
           console.log(res.body)
           console.log(err);
+          return;
         })
       }
     })
