@@ -6,6 +6,42 @@ var knex = require('../knex');
 const request = require('request');
 const cheerio = require('cheerio');
 
+router.get('/api/scheduledscraper',(req, res, next)=>{
+  console.log('in /api/startscan')
+  var filters;
+  knex('filters')
+    .where('notify', true)
+    .then((filters) => {
+      for(let filter of filters){
+
+        let options = {
+          url: 'https://rent-finder.herokuapp.com/scheduledscraper',
+          headers:{
+            'Content-type':'application/json'
+          },
+          body: JSON.stringify(filter)
+        }
+
+        request.post(options, (err, res, body) => {
+          if (!err && res.statusCode === 200) {
+            console.log('good');
+            console.log(res.body);
+            return;
+          }
+          console.log('bad');
+          console.log(res.body)
+          console.log(err);
+          return;
+        })
+      }
+    })
+    .catch((err) => {
+      next(err)
+    })
+
+    return res.status(200).end();
+})
+
 router.post('/scheduledscraper', (req, res, next) => {
   console.log("in /scheduledscraper")
   var body = JSON.parse(req.body)

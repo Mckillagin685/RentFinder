@@ -15,61 +15,23 @@ const message = require('./routes/message');
 app.use(links);
 app.use(message);
 
-app.use((_req, res) => {
-  res.sendStatus(404);
-});
+// app.use((_req, res) => {
+//   res.sendStatus(404);
+// });
 
-app.use((err, _req, res, _next) => {
-  if (err.output && err.output.statusCode) {
-    return res
-      .status(err.output.statusCode)
-      .set('Content-Type', 'text/plain')
-      .send(err.message);
-  }
+// app.use((err, _req, res, _next) => {
+//   if (err.output && err.output.statusCode) {
+//     return res
+//       .status(err.output.statusCode)
+//       .set('Content-Type', 'text/plain')
+//       .send(err.message);
+//   }
 
-  console.error(err.stack);
-  res.sendStatus(500);
-});
+//   console.error(err.stack);
+//   res.sendStatus(500);
+// });
 
 app.get('/', function (req, res) {res.status(200).send('Hello World!'); });
-
-
-
-app.get('/api/startscan', function(req, res, next){
-  console.log('in /api/startscan')
-  var filters;
-  knex('filters')
-    .where('notify', true)
-    .then((filters) => {
-      for(let filter of filters){
-
-        let options = {
-          url: 'https://rent-finder.herokuapp.com/scheduledscraper',
-          headers:{
-            'Content-type':'application/json'
-          },
-          body: JSON.stringify(filter)
-        }
-
-        request.post(options, (err, res, body) => {
-          if (!err && res.statusCode === 200) {
-            console.log('good');
-            console.log(res.body);
-            return;
-          }
-          console.log('bad');
-          console.log(res.body)
-          console.log(err);
-          return;
-        })
-      }
-    })
-    .catch((err) => {
-      next(err)
-    })
-
-    return res.status(200).end();
-})
 
 app.post('/wakeup', function(req, res, next){
   var userName = req.body.user_name; 
@@ -128,3 +90,5 @@ app.post('/createfilter', function(req, res, next){
 app.listen(port, function(){
   console.log('Listening on port ' + port);
 })
+
+module.exports = app
