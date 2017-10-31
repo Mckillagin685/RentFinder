@@ -42,6 +42,7 @@ app.get('/api/startscan', function(req, res, next){
     .where('notify', true)
     .then((filters) => {
       for(let filter of filters){
+        console.log(filter)
 
         let options = {
           url: 'https://rent-finder.herokuapp.com/scheduledscraper',
