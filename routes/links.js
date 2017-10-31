@@ -2,7 +2,7 @@
 
 const express = require('express');
 const router = express.Router();
-const knex = require('knex');
+var kenx = require('./knex')
 const request = require('request');
 const cheerio = require('cheerio');
 
