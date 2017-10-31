@@ -8,6 +8,7 @@ var app = express();
 var port = process.env.PORT || 1337;
 
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.JSON())
 
 const links = require('./routes/links');
 const message = require('./routes/message');
