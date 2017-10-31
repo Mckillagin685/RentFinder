@@ -15,6 +15,22 @@ const message = require('./routes/message');
 app.use(links);
 app.use(message);
 
+app.use((_req, res) => {
+  res.sendStatus(404);
+});
+
+app.use((err, _req, res, _next) => {
+  if (err.output && err.output.statusCode) {
+    return res
+      .status(err.output.statusCode)
+      .set('Content-Type', 'text/plain')
+      .send(err.message);
+  }
+
+  console.error(err.stack);
+  res.sendStatus(500);
+});
+
 app.get('/', function (req, res) {res.status(200).send('Hello World!'); });
 
 app.listen(port, function(){
