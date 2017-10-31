@@ -540,5 +540,5 @@ module.exports = {
   photo,
   notify,
   minRentTryAgain,
-  userNotify
+  // userNotify
 }
