@@ -24,6 +24,9 @@ app.get('/api/startscan', function(req, res, next){
 
         let options = {
           url: 'https://rent-finder.herokuapp.com/scheduledscraper',
+          headers:{
+            'Content-type':'application/json'
+          },
           body: JSON.stringify(filter)
         }
 
