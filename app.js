@@ -33,6 +33,44 @@ app.use(message);
 
 app.get('/', function (req, res) {res.status(200).send('Hello World!'); });
 
+
+
+app.get('/api/startscan', function(req, res, next){
+  console.log('in /api/startscan')
+  var filters;
+  knex('filters')
+    .where('notify', true)
+    .then((filters) => {
+      for(let filter of filters){
+
+        let options = {
+          url: 'https://rent-finder.herokuapp.com/scheduledscraper',
+          headers:{
+            'Content-type':'application/json'
+          },
+          body: JSON.stringify(filter)
+        }
+
+        request.post(options, (err, res, body) => {
+          if (!err && res.statusCode === 200) {
+            console.log('good');
+            console.log(res.body);
+            return;
+          }
+          console.log('bad');
+          console.log(res.body)
+          console.log(err);
+          return;
+        })
+      }
+    })
+    .catch((err) => {
+      next(err)
+    })
+
+    return res.status(200).end();
+})
+
 app.post('/wakeup', function(req, res, next){
   var userName = req.body.user_name; 
   var botPayload= {
