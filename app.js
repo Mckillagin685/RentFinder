@@ -42,7 +42,6 @@ app.get('/api/startscan', function(req, res, next){
     .where('notify', true)
     .then((filters) => {
       for(let filter of filters){
-        console.log(filter)
 
         let options = {
           url: 'https://rent-finder.herokuapp.com/scheduledscraper',
@@ -52,14 +51,14 @@ app.get('/api/startscan', function(req, res, next){
           body: JSON.stringify(filter)
         }
 
+        console.log(options.body)
+
         request.post(options, (err, res, body) => {
           if (!err && res.statusCode === 200) {
             console.log('good');
-            console.log(res.body);
             return;
           }
           console.log('bad');
-          console.log(res.body)
           console.log(err);
           return;
         })
