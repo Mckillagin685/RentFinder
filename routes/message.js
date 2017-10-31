@@ -7,7 +7,8 @@ const request = require('request');
 const payloads = require('../payloads')
 
 router.post('/notifyuser', (req, res, next) => {
-  var body = JSON.parse(req.body)
+  var body = req.body
+  console.log(body)
   var options = {
     url: 'https://hooks.slack.com/services/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',
     headers: {
