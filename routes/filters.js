@@ -1,5 +1,5 @@
 'use strict';
 
 const express = require('express');
-var kenx = require('./knex')
+var knex = require('./knex')
 const router = express.Router();

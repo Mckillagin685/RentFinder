@@ -1,6 +1,6 @@
 var dataChecks = require('./dataChecks');
 var payloads = require('./payloads');
-var kenx = require('./knex')
+var knex = require('./knex')
 var express = require('express');
 var bodyParser = require('body-parser');
 
