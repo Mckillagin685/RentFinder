@@ -15,7 +15,7 @@ app.listen(port, function(){
   console.log('Listening on port ' + port);
 })
 
-app.post('/api/startscan', function(req, res, next){
+app.get('/api/startscan', function(req, res, next){
   var filters;
   knex('filters')
     .where('notify', true)
