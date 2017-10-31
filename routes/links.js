@@ -8,7 +8,7 @@ const cheerio = require('cheerio');
 
 router.post('/scheduledscraper', (req, res, next) => {
   console.log("in /scheduledscraper")
-  var body = JSON.parse(req.body)
+  var body = req.body
   console.log(body)
   var picsPets = ''
   if(body.pets === true){
