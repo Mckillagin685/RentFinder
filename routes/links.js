@@ -64,7 +64,7 @@ router.post('/scheduledscraper', (req, res, next) => {
 module.exports = router
 
 
-console.log(links)
+// console.log(links)
 
           // let options = {
           //   url:'https://rent-finder.herokuapp.com/notifyuser',
