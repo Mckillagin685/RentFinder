@@ -30,14 +30,44 @@ router.post('/scheduledscraper', (req, res, next) => {
         }
       })
       object.links = JSON.stringify(result);
+
+      let options = {
+        url:'https://rent-finder.herokuapp.com/notifyuser',
+        headers: {
+          'Content-type':'application/json'
+        },
+        body: JSON.stringify(body)
+      }
+
       knex('links')
         .where('filter_uuid', object.filter_uuid)
         .then((links) => {
           if(!links[0]){
             console.log('there are no links here')
+
+            request(options, (err, res, body) => {
+              if (err){
+                return console.log(err);
+              }
+                console.log('good');
+              })
+
             return knex('links').insert(object, '*');
-          }else if (dataChecks.compareArrays(links[0].links, result) !== true){
-            console.log('not equal')
+          }else if (dataChecks.compareArrays(links[0].links, result) === false){
+            
+            request(options, (err, res, body) => {
+              if (err){
+                return console.log(err);
+              }
+                console.log('good');
+              })
+
+            return knex('filter')
+              .where('filter_uuid', object.filter_uuid)
+              .update({links: result})
+              .catch((err)=>{
+                console.log(err)
+              });
           }else{
             console.log('equal to result')
           }
@@ -68,22 +98,8 @@ module.exports = router
 
 // console.log(links)
 
-          // let options = {
-          //   url:'https://rent-finder.herokuapp.com/notifyuser',
-          //   headers: {
-          //     'Content-type':'application/json'
-          //   },
-          //   body: JSON.stringify(body)
-          // }
-
           // if(!links[0]){
           //   console.log('inside if statement inside knex search')
-          //   request(options, (err, res, body) => {
-          //     if (err){
-          //       return console.log(err);
-          //     }
-          //     console.log('good');
-          //   })
           //   return knex('links').insert(object, '*')
           // }else if (links.links !== result){
           //   console.log('inside if statement inside knex search')
