@@ -9,6 +9,7 @@ const payloads = require('../payloads')
 router.post('/notifyuser', (req, res, next) => {
   console.log('in /notifyuser')
   var body = req.body
+  console.log(req.body)
   var options = {
     url: 'https://hooks.slack.com/services/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',
     headers: {
