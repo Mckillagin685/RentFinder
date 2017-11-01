@@ -39,7 +39,7 @@ router.post('/scheduledscraper', (req, res, next) => {
             return knex('links').insert(object, '*');
           }else if (links.links !== result){
             console.log('above')
-            console.log(links.links);
+            console.log(links[0].links);
           }
         })
         .catch((err) => {
