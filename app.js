@@ -12,9 +12,11 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 const links = require('./routes/links');
 const message = require('./routes/message');
+const filtersRoutes = require('./routes/filters');
 
 app.use(links);
 app.use(message);
+app.use(filtersRoutes);
 
 // app.use((_req, res) => {
 //   res.sendStatus(404);
@@ -70,6 +72,11 @@ app.get('/api/startscan', function(req, res, next){
     })
 
     return res.status(200).end();
+})
+
+app.post('/listFilters', function(req, res, next){
+  console.log(req.body.payload)
+  return res.status(200).end();
 })
 
 app.post('/wakeup', function(req, res, next){
