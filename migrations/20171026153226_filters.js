@@ -2,6 +2,7 @@
 exports.up = function(knex) {
   return knex.schema.createTable('filters', (table) => {
     table.increments('id');
+    table.string('uuid').notNullable();
     table.string('user_name').notNullable().defaultTo('');
     table.string('city').notNullable().defaultTo('');
     table.string('state').notNullable().defaultTo('');

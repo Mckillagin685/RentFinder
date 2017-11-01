@@ -1,5 +1,6 @@
 var payloads = require("./payloads")
 var knex = require('./knex')
+var uuid = require('uuid')
 
 
 function createFilterPrompt(incomingPayload){
@@ -160,6 +161,7 @@ function gatherRequestInfo(team, channel, user){
   // result.channel_id = channel.id;
   // result.channel_name = channel.name;
   // result.user_id = user.id;
+  result.uuid = uuid.v4()
   result.user_name = user.name
   return result;
 }

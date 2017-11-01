@@ -17,7 +17,7 @@ router.post('/scheduledscraper', (req, res, next) => {
     picsPets += '&pics=Y'
   }
   let result = [];
-  let object = {filter_id: body.id};
+  let object = {filter_uuid: body.uuid};
   let url = `http://www.rentalsource.com/rentals/${body.state}/${body.city}/?min=${body.min}&max=${body.max}&beds=${body.beds}&baths=${body.baths}&types%5B%5D=hous&types%5B%5D=apt&types%5B%5D=town&types%5B%5D=cond&types%5B%5D=vac${picsPets}&pos=0&sortby=updated&orderby=asc`
   request(url, (err, res, body) => {
     if(!err && res.statusCode == 200){
@@ -29,48 +29,16 @@ router.post('/scheduledscraper', (req, res, next) => {
         }
       })
       object.links = JSON.stringify(result);
-      console.log(object.filter_id)
+      console.log(object.filter_uuid)
       knex('links')
-        .where('filter_id', object.filter_id)
+        .where('filter_uuid', object.filter_uuid)
         .then((links) => {
-          console.log(links)
+          console.log(links);
           if(!links[0]){
-            
-            let options = {
-              url:'https://rent-finder.herokuapp.com/notifyuser',
-              headers: {
-                'Content-type':'application/json'
-              },
-              body: JSON.stringify(body)
-            }
-            console.log('inside if statement inside knex search')
-            request(options, (err, res, body) => {
-              if (err){
-                console.log(err);
-                return;
-              }
-              console.log('good');
-            })
-            return knex('links').insert(object, '*')
+            knex('links').insert(object, '*')
           }else if (links.links !== result){
-            let options = {
-              url:'https://rent-finder.herokuapp.com/notifyuser',
-              headers: {
-                'Content-type':'application/json'
-              },
-              body: JSON.stringify(body)
-            }
-            console.log('inside if statement inside knex search')
-            request(options, (err, res, body) => {
-              if (err){
-                console.log(err);
-                return;
-              }
-              console.log('good');
-            })
-            return knex('links').insert(object, '*')
+            console.log(links.links);
           }
-          console.log('nothing new')
         })
         .catch((err) => {
           console.log(err);
@@ -94,3 +62,35 @@ router.post('/scheduledscraper', (req, res, next) => {
 // })
 
 module.exports = router
+
+
+console.log(links)
+
+          // let options = {
+          //   url:'https://rent-finder.herokuapp.com/notifyuser',
+          //   headers: {
+          //     'Content-type':'application/json'
+          //   },
+          //   body: JSON.stringify(body)
+          // }
+
+          // if(!links[0]){
+          //   console.log('inside if statement inside knex search')
+          //   request(options, (err, res, body) => {
+          //     if (err){
+          //       return console.log(err);
+          //     }
+          //     console.log('good');
+          //   })
+          //   return knex('links').insert(object, '*')
+          // }else if (links.links !== result){
+          //   console.log('inside if statement inside knex search')
+          //   request(options, (err, res, body) => {
+          //     if (err){
+          //       return console.log(err);
+          //     }
+          //     console.log('good');
+          //   })
+          //   return knex('links').insert(object, '*')
+          // }
+          // console.log('nothing new')
