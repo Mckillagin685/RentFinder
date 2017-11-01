@@ -44,7 +44,7 @@ router.post('/scheduledscraper', (req, res, next) => {
               },
               body: JSON.stringify(body)
             }
-
+            console.log('inside if statement inside knex search')
             request(options, (err, res, body) => {
               if (err){
                 console.log(err);
