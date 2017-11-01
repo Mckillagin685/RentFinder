@@ -38,6 +38,11 @@ router.post('/scheduledscraper', (req, res, next) => {
           }else if (links[0].links !== result){
             console.log(result)
             console.log(links[0].links);
+            if (result === links[0].links){
+              console.log('true')
+            }else{
+              console.log('false')
+            }
           }else{
             console.log('equal to result')
           }
