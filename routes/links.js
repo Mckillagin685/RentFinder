@@ -51,8 +51,24 @@ router.post('/scheduledscraper', (req, res, next) => {
               res.status(200).end();
             })
             return knex('links').insert(object, '*')
+          }else if (JSON.parse(links.links) !== result){
+            let options = {
+              url:'https://rent-finder.herokuapp.com/notifyuser',
+              headers: {
+                'Content-type':'application/json'
+              },
+              body: JSON.stringify(body)
+            }
+            console.log('inside if statement inside knex search')
+            request(options, (err, res, body) => {
+              if (err){
+                console.log(err);
+              }
+              res.status(200).end();
+            })
+            return knex('links').insert(object, '*')
           }
-          console.log('outside if statement inside knex search')
+          console.log('nothing new')
         })
         .catch((err) => {
           console.log(err);
