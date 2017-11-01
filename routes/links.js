@@ -34,6 +34,7 @@ router.post('/scheduledscraper', (req, res, next) => {
         .where('filter_id', object.filter_id)
         .then((links) => {
           console.log(links)
+          console.log()
           if(links.links && JSON.parse(object.links) !== result){
             
             let options = {
@@ -52,6 +53,7 @@ router.post('/scheduledscraper', (req, res, next) => {
             })
             return knex('links').insert(object, '*')
           }
+          console.log('outside if statement inside knex search')
         })
         .catch((err) => {
           console.log(err);
