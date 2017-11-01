@@ -74,7 +74,7 @@ app.get('/api/startscan', function(req, res, next){
     return res.status(200).end();
 })
 
-app.post('/listFilters', function(req, res, next){
+app.post('/listfilters', function(req, res, next){
   console.log(req.body.payload)
   return res.status(200).end();
 })
