@@ -48,7 +48,7 @@ router.post('/scheduledscraper', (req, res, next) => {
               if (err){
                 console.log(err);
               }
-              res.status(200).end();
+              res.statusCode(200).end();
             })
             return knex('links').insert(object, '*')
           }else if (JSON.parse(links.links) !== result){
@@ -64,7 +64,7 @@ router.post('/scheduledscraper', (req, res, next) => {
               if (err){
                 console.log(err);
               }
-              res.status(200).end();
+              res.statusCode(200).end();
             })
             return knex('links').insert(object, '*')
           }
