@@ -51,7 +51,7 @@ router.post('/scheduledscraper', (req, res, next) => {
               res.statusCode(200).end();
             })
             return knex('links').insert(object, '*')
-          }else if (JSON.parse(links.links) !== result){
+          }else if (links.links !== result){
             let options = {
               url:'https://rent-finder.herokuapp.com/notifyuser',
               headers: {
