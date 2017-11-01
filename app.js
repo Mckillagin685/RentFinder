@@ -77,14 +77,16 @@ app.get('/api/startscan', function(req, res, next){
 app.post('/listfilters', function(req, res, next){
   var filterNum = req.body.text;
   var userName = req.body.user_name;
+  var reqObject = {user_name: userName};
 
   let options = {
     url: 'https://rent-finder.herokuapp.com/filters',
     headers:{
       'Content-type':'applicaiton/json'
     },
-    body: JSON.stringify({filter_num: filterNum, user_name: userName})
+    body: JSON.stringify(reqObject)
   }
+  console.log(options.body)
 
   request.get(options, (err, res, body) => {
     if(err){
