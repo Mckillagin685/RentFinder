@@ -7,8 +7,8 @@ var request = require('request')
 var app = express();
 var port = process.env.PORT || 1337;
 
-app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended: true}));
 
 const links = require('./routes/links');
 const message = require('./routes/message');
