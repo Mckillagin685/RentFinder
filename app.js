@@ -82,7 +82,7 @@ app.post('/listfilters', function(req, res, next){
   let options = {
     url: 'https://rent-finder.herokuapp.com/filters',
     headers:{
-      'Content-type':'applicaiton/json'
+      'Content-type':'application/json'
     },
     body: JSON.stringify(reqObject)
   }
