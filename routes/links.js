@@ -38,13 +38,13 @@ router.post('/scheduledscraper', (req, res, next) => {
         },
         body: JSON.stringify(req.body)
       }
+      console.log(options)
 
       knex('links')
         .where('filter_uuid', object.filter_uuid)
         .then((links) => {
           if(!links[0]){
             console.log('there are no links here')
-            console.log(options.body)
             request.post(options, (err, res, body) => {
               if (err){
                 return console.log(err);
