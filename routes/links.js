@@ -38,6 +38,7 @@ router.post('/scheduledscraper', (req, res, next) => {
             console.log('there are no links here')
             return knex('links').insert(object, '*');
           }else if (links.links !== result){
+            console.log('above')
             console.log(links.links);
           }
         })
