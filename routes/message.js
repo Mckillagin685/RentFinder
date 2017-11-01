@@ -20,7 +20,7 @@ router.post('/notifyuser', (req, res, next) => {
         "text":`Hey <@${body.user.name}>`,
         "attachments":[
           {
-            "text":`New postings in filter ${body.filter.id}`
+            "text":`New postings in filter ${body.id}`
           }
         ]
       }
