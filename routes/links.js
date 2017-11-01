@@ -36,7 +36,7 @@ router.post('/scheduledscraper', (req, res, next) => {
         headers: {
           'Content-type':'application/json'
         },
-        body: body
+        body: JSON.stringify(body)
       }
 
       knex('links')
@@ -62,7 +62,7 @@ router.post('/scheduledscraper', (req, res, next) => {
                 console.log('good');
               })
 
-            return knex('filter')
+            return knex('links')
               .where('filter_uuid', object.filter_uuid)
               .update({links: result})
               .catch((err)=>{
