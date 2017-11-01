@@ -9,7 +9,7 @@ const cheerio = require('cheerio');
 router.post('/scheduledscraper', (req, res, next) => {
   console.log("in /scheduledscraper")
   var body = req.body
-  console.log(body.id)
+  console.log(typeof body.id)
   var picsPets = ''
   if(body.pets === true){
     picsPets += '&pets=Y'
