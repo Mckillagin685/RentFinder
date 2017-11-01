@@ -9,7 +9,7 @@ const cheerio = require('cheerio');
 router.post('/scheduledscraper', (req, res, next) => {
   console.log("in /scheduledscraper")
   var body = req.body
-  console.log(typeof body.id)
+  console.log(body.id)
   var picsPets = ''
   if(body.pets === true){
     picsPets += '&pets=Y'
@@ -30,7 +30,8 @@ router.post('/scheduledscraper', (req, res, next) => {
         }
       })
       object.links = JSON.stringify(result);
-      object.filter_id = parseInt(body.id);
+      object.filter_id = body.id;
+      console.log(object)
       knex('links')
         .where('filter_id', body.id)
         .then((links) => {
