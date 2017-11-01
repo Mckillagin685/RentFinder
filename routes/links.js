@@ -2,9 +2,10 @@
 
 const express = require('express');
 const router = express.Router();
-var knex = require('../knex');
+const knex = require('../knex');
 const request = require('request');
 const cheerio = require('cheerio');
+const dataChecks = require('../dataChecks');
 
 router.post('/scheduledscraper', (req, res, next) => {
   console.log("in /scheduledscraper")
@@ -38,11 +39,7 @@ router.post('/scheduledscraper', (req, res, next) => {
           }else if (links[0].links !== result){
             console.log(typeof result)
             console.log(typeof links[0].links);
-            if (result === links[0].links){
-              console.log('true')
-            }else{
-              console.log('false')
-            }
+            console.log(dataChecks.compareArrays(links[0].links, result))
           }else{
             console.log('equal to result')
           }

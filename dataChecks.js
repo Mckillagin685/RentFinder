@@ -174,9 +174,23 @@ function linksToText (links){
   return result
 }
 
+function compareArrays(arrA, arrB){
+  if(arrA.length === arrB.length){
+    for (let x = 0; x < arrA.length; x++){
+      if(arrA[x] !== arrB[x]){
+        return false;
+      }
+    }
+  }else{
+    return false;
+  }
+  return true;
+}
+
 module.exports = {
   location,
   bedOrBath,
   createFilterPrompt,
-  linksToText
+  linksToText,
+  compareArrays
 }
