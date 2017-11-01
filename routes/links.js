@@ -20,9 +20,9 @@ router.post('/scheduledscraper', (req, res, next) => {
   let result = [];
   let object = {filter_uuid: body.uuid};
   let url = `http://www.rentalsource.com/rentals/${body.state}/${body.city}/?min=${body.min}&max=${body.max}&beds=${body.beds}&baths=${body.baths}&types%5B%5D=hous&types%5B%5D=apt&types%5B%5D=town&types%5B%5D=cond&types%5B%5D=vac${picsPets}&pos=0&sortby=updated&orderby=asc`
-  request(url, (err, res, body) => {
+  request(url, (err, res, resBody) => {
     if(!err && res.statusCode == 200){
-      var $ = cheerio.load(body);
+      var $ = cheerio.load(resBody);
       $('.ptb5 a[href]').each(function(){
         var url = this.attribs.href
         if(result.indexOf(url) === -1){
