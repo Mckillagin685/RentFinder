@@ -20,6 +20,7 @@ router.get('/numfilters', (req, res, next)=>{
 })
 
 router.get('/filters', (req, res, next) => {
+  console.log(req.body)
   var username = req.body.user_name;
   
     knex('filters')
