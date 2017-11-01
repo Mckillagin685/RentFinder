@@ -86,7 +86,6 @@ app.post('/listfilters', function(req, res, next){
     },
     body: JSON.stringify(reqObject)
   }
-  console.log(options.body)
 
   request.get(options, (err, res, body) => {
     if(err){
