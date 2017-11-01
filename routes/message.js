@@ -7,6 +7,7 @@ const request = require('request');
 const payloads = require('../payloads')
 
 router.post('/notifyuser', (req, res, next) => {
+  console.log('in /notifyuser')
   var body = req.body
   console.log(body)
   var options = {

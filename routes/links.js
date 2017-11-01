@@ -50,10 +50,9 @@ router.post('/scheduledscraper', (req, res, next) => {
               }
               res.status(200).end();
             })
-
+            return knex('links').insert(object, '*')
           }
         })
-        .insert(object, '*')
         .catch((err) => {
           console.log(err);
         })
