@@ -9,7 +9,6 @@ const cheerio = require('cheerio');
 router.post('/scheduledscraper', (req, res, next) => {
   console.log("in /scheduledscraper")
   var body = req.body
-  console.log(body.id)
   var picsPets = ''
   if(body.pets === true){
     picsPets += '&pets=Y'
@@ -19,6 +18,7 @@ router.post('/scheduledscraper', (req, res, next) => {
   }
   let result = [];
   let object = {filter_id: body.id};
+  console.log('0 ', object)
   let url = `http://www.rentalsource.com/rentals/${body.state}/${body.city}/?min=${body.min}&max=${body.max}&beds=${body.beds}&baths=${body.baths}&types%5B%5D=hous&types%5B%5D=apt&types%5B%5D=town&types%5B%5D=cond&types%5B%5D=vac${picsPets}&pos=0&sortby=updated&orderby=asc`
   request(url, (err, res, body) => {
     if(!err && res.statusCode == 200){
@@ -30,8 +30,7 @@ router.post('/scheduledscraper', (req, res, next) => {
         }
       })
       object.links = JSON.stringify(result);
-      object.filter_id = body.id;
-      console.log(object)
+      console.log('1 ', object)
       knex('links')
         .where('filter_id', body.id)
         .then((links) => {
