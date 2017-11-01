@@ -32,6 +32,7 @@ router.post('/scheduledscraper', (req, res, next) => {
       })
       object.links = JSON.stringify(result);
       object.filter_id = parseInt(body.id);
+      console.log(object)
       knex('links')
         .where('filter_id', body.id)
         .then((links) => {
