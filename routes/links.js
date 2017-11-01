@@ -52,8 +52,7 @@ router.post('/scheduledscraper', (req, res, next) => {
                 console.log('good');
               })
 
-            // return knex('links').insert(object, '*');
-            return;
+            return knex('links').insert(object, '*');
           }else if (dataChecks.compareArrays(links[0].links, result) === false){
             
             request.post(options, (err, res, body) => {
