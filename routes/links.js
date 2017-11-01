@@ -38,7 +38,6 @@ router.post('/scheduledscraper', (req, res, next) => {
         },
         body: JSON.stringify(req.body)
       }
-      console.log(options)
 
       knex('links')
         .where('filter_uuid', object.filter_uuid)
@@ -80,35 +79,4 @@ router.post('/scheduledscraper', (req, res, next) => {
   })
 })
 
-// make different call for /listResults command
-
-// router.get('/links/:id', (req, res, next) => {
-//   knex('links')
-//     .where('filter_id', req.params)
-//     .then((links) => {
-//       return res.send(links);
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//     })
-// })
-
 module.exports = router
-
-
-// console.log(links)
-
-          // if(!links[0]){
-          //   console.log('inside if statement inside knex search')
-          //   return knex('links').insert(object, '*')
-          // }else if (links.links !== result){
-          //   console.log('inside if statement inside knex search')
-          //   request(options, (err, res, body) => {
-          //     if (err){
-          //       return console.log(err);
-          //     }
-          //     console.log('good');
-          //   })
-          //   return knex('links').insert(object, '*')
-          // }
-          // console.log('nothing new')
