@@ -34,8 +34,7 @@ router.post('/scheduledscraper', (req, res, next) => {
         .where('filter_id', object.filter_id)
         .then((links) => {
           console.log(links)
-          console.log()
-          if(links.links && JSON.parse(object.links) !== result){
+          if(!links || JSON.parse(links.links) !== result){
             
             let options = {
               url:'https://rent-finder.herokuapp.com/notifyuser',
