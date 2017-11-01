@@ -17,7 +17,7 @@ router.post('/notifyuser', (req, res, next) => {
     }, 
     body: JSON.stringify(
       {
-        "text":`Hey <@${body.user.name}>`,
+        "text":`Hey <@${body.user_name}>`,
         "attachments":[
           {
             "text":`New postings in filter ${body.id}`
