@@ -29,18 +29,17 @@ router.post('/scheduledscraper', (req, res, next) => {
         }
       })
       object.links = JSON.stringify(result);
-      console.log(object.links)
       knex('links')
         .where('filter_uuid', object.filter_uuid)
         .then((links) => {
-          console.log(links);
           if(!links[0]){
             console.log('there are no links here')
             return knex('links').insert(object, '*');
-          }else if (links.links !== result){
+          }else if (links[0].links !== result){
             console.log('above')
             console.log(links[0].links);
           }
+          console.log('equal to result')
         })
         .catch((err) => {
           console.log(err);
