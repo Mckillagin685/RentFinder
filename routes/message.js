@@ -27,7 +27,7 @@ router.post('/notifyuser', (req, res, next) => {
     )
   }
   
-function callback(error , response, body){
+function callback(error, response, body){
     console.log('Post Notification')
     if (!error && response.statusCode == 200) {
       console.log(body)
