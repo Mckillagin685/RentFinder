@@ -44,7 +44,7 @@ router.post('/scheduledscraper', (req, res, next) => {
         .then((links) => {
           if(!links[0]){
             console.log('there are no links here')
-
+            console.log(options.body)
             request.post(options, (err, res, body) => {
               if (err){
                 return console.log(err);
