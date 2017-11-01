@@ -36,7 +36,7 @@ router.post('/scheduledscraper', (req, res, next) => {
         headers: {
           'Content-type':'application/json'
         },
-        body: body
+        body: JSON.stringify(body)
       }
 
       knex('links')
