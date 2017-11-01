@@ -45,7 +45,7 @@ router.post('/scheduledscraper', (req, res, next) => {
           if(!links[0]){
             console.log('there are no links here')
 
-            request(options, (err, res, body) => {
+            request.post(options, (err, res, body) => {
               if (err){
                 return console.log(err);
               }
@@ -55,7 +55,7 @@ router.post('/scheduledscraper', (req, res, next) => {
             return knex('links').insert(object, '*');
           }else if (dataChecks.compareArrays(links[0].links, result) === false){
             
-            request(options, (err, res, body) => {
+            request.post(options, (err, res, body) => {
               if (err){
                 return console.log(err);
               }
