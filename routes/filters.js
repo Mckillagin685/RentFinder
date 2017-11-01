@@ -21,17 +21,16 @@ router.get('/numfilters', (req, res, next)=>{
 
 router.get('/filters', (req, res, next) => {
   var username = req.body.user_name;
-  console.log(username)
   
     knex('filters')
       .where('user_name', username)
       .then((filters) => {
-        return res.send(filters)
+        res.send(filters)
       })
       .catch((err)=>{
         console.log(err)
       })
-      return res.sendStatus(500);
+      // return res.sendStatus(500);
 })
 
 
