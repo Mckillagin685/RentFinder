@@ -29,7 +29,7 @@ router.post('/scheduledscraper', (req, res, next) => {
         }
       })
       object.links = JSON.stringify(result);
-      console.log(object.filter_uuid)
+      console.log(object.links)
       knex('links')
         .where('filter_uuid', object.filter_uuid)
         .then((links) => {
