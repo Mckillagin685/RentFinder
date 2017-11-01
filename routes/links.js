@@ -18,7 +18,6 @@ router.post('/scheduledscraper', (req, res, next) => {
   }
   let result = [];
   let object = {filter_id: body.id};
-  console.log('0 ', object)
   let url = `http://www.rentalsource.com/rentals/${body.state}/${body.city}/?min=${body.min}&max=${body.max}&beds=${body.beds}&baths=${body.baths}&types%5B%5D=hous&types%5B%5D=apt&types%5B%5D=town&types%5B%5D=cond&types%5B%5D=vac${picsPets}&pos=0&sortby=updated&orderby=asc`
   request(url, (err, res, body) => {
     if(!err && res.statusCode == 200){
@@ -30,9 +29,9 @@ router.post('/scheduledscraper', (req, res, next) => {
         }
       })
       object.links = JSON.stringify(result);
-      console.log('1 ', object)
+      console.log(object.filter_id)
       knex('links')
-        .where('filter_id', object.filter)
+        .where('filter_id', object.filter_id)
         .then((links) => {
           if(links && JSON.parse(links.links) !== result){
             
