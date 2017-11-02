@@ -109,6 +109,8 @@ app.post('/listfilters', function(req, res, next){
       "fields": fields
     }
 
+    console.log(botPayload)
+
     if(userName !== 'rentbot'){
       return res.status(200).json(botPayload);
     }else{
