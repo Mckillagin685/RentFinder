@@ -36,9 +36,9 @@ app.use(filtersRoutes);
 
 app.get('/', function (req, res) {res.status(200).send('Hello World!'); });
 
-app.post('/test', function(req, res, next){
-  // console.log(dataChecks.checkNumOfFilters())
-})
+// app.post('/test', function(req, res, next){
+//   // console.log(dataChecks.checkNumOfFilters())
+// })
 
 
 

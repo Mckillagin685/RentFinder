@@ -188,17 +188,17 @@ function compareArrays(arrA, arrB){
   return true;
 }
 
-function checkNumOfFilters(username, cb){
-  knex('filters')
-  .where('user_name', username)
-  .then((filters) => {
-    var filtersLength = filters.length
-    cb(filtersLength);
-  })
-  .catch((err)=>{
-    console.log(err)
-  })
-}
+// function checkNumOfFilters(username, cb){
+//   knex('filters')
+//   .where('user_name', username)
+//   .then((filters) => {
+//     var filtersLength = filters.length
+//     cb(filtersLength);
+//   })
+//   .catch((err)=>{
+//     console.log(err)
+//   })
+// }
 
 module.exports = {
   location,
@@ -206,5 +206,5 @@ module.exports = {
   createFilterPrompt,
   linksToText,
   compareArrays,
-  checkNumOfFilters
+  // checkNumOfFilters,
 }

@@ -4,19 +4,19 @@ const express = require('express');
 var knex = require('../knex');
 const router = express.Router();
 
-router.get('/numfilters', (req, res, next)=>{
-  var username = req.body.user_name;
+// router.get('/numfilters', (req, res, next)=>{
+//   var username = req.body.user_name;
 
-  knex('filters')
-    .where('user_name', username)
-    .then((filters) => {
-      var filtersLength = filters.length
-      res.send([filtersLength])
-    })
-    .catch((err)=>{
-      console.log(err)
-    })
-})
+//   knex('filters')
+//     .where('user_name', username)
+//     .then((filters) => {
+//       var filtersLength = filters.length
+//       res.send([filtersLength])
+//     })
+//     .catch((err)=>{
+//       console.log(err)
+//     })
+// })
 
 router.get('/filters', (req, res, next) => {
   const username = req.body.user_name;
