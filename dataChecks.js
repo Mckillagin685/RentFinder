@@ -190,7 +190,7 @@ function compareArrays(arrA, arrB){
 
 function checkNumOfFilters(username){
   let options = {
-    url:'/numfilters',
+    url:'https://rent-finder.herokuapp.com/numfilters',
     headers:{
       'Content-type':'application/json'
     },
