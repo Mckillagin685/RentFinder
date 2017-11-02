@@ -10,7 +10,7 @@ router.get('/numfilters', (req, res, next)=>{
   knex('filters')
     .where('user_name', username)
     .then((filters) => {
-      var filterLength = filters.length
+      var filtersLength = filters.length
       return res.send(filtersLength)
     })
     .catch((err)=>{
