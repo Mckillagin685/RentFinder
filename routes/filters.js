@@ -31,33 +31,33 @@ router.get('/filters', (req, res, next) => {
       });
 });
 
-router.delete('/filter', (req, res, next) => {
-  const userName = req.body.user_name;
-  const filterId = req.body.filter_id;
+// router.delete('/filter', (req, res, next) => {
+//   const userName = req.body.user_name;
+//   const filterId = req.body.filter_id;
 
-  knex('filters')
-    .where({user_name: userName, id: filterId})
-    .first()
-    .then((filter) => {
-      if(!filter){
-        throw('filter not found')
-      }
-      return knex('filters')
-                .del()
-                .where({
-                  user_name: userName, 
-                  id: filterId
-                })
-    })
-    .then(()=>{
-      delete filterId.id
+//   knex('filters')
+//     .where({user_name: userName, id: filterId})
+//     .first()
+//     .then((filter) => {
+//       if(!filter){
+//         throw('filter not found')
+//       }
+//       return knex('filters')
+//                 .del()
+//                 .where({
+//                   user_name: userName, 
+//                   id: filterId
+//                 })
+//     })
+//     .then(()=>{
+//       delete filterId.id
 
-      res.send(filter)
-    })
-    .catch((err) => {
-      console.log(err)
-    });
-});
+//       res.send(filter)
+//     })
+//     .catch((err) => {
+//       console.log(err)
+//     });
+// });
 
 
 module.exports = router;
