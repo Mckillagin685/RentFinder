@@ -202,7 +202,7 @@ function checkNumOfFilters(username){
       return;
     }
 
-    console.log(response)
+    console.log(res)
   })
 }
 
