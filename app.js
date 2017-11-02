@@ -98,11 +98,10 @@ app.post('/listfilters', function(req, res, next){
       console.log(filter)
       var field = {
         "title":`Filter ${filter.id}`,
-        "value":`Place ${filter.city}, ${filter.state}, Beds: ${filter.beds}, baths: ${filter.baths}, Price range ${filter.min}-${filter.max}, \n pet friendly:${filter.pet_friendly}, Show only photos:${filter.photo}, notifications on:${filter.notify}`,
+        "value":`Place ${filter.city}, ${filter.state}, Beds: ${filter.beds}, baths: ${filter.baths}, Price range: ${filter.min}-${filter.max}, \n pet friendly:${filter.pet_friendly}, Show only photos:${filter.photo}, notifications on:${filter.notify}`,
         "short":false
       }
       fields.push(field);
-      console.log(fields)
     }
   })
 
@@ -113,7 +112,7 @@ app.post('/listfilters', function(req, res, next){
     "fields": fields
   }
 
-  // console.log(botPayload)
+  console.log(botPayload)
 
   if(userName !== 'rentbot'){
     return res.status(200).json(botPayload);
