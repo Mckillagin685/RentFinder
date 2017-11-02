@@ -1,6 +1,7 @@
-var payloads = require("./payloads")
-var knex = require('./knex')
-var uuid = require('uuid')
+var payloads = require("./payloads");
+var knex = require('./knex');
+var uuid = require('uuid');
+var request = require('request');
 
 
 function createFilterPrompt(incomingPayload){
@@ -187,10 +188,29 @@ function compareArrays(arrA, arrB){
   return true;
 }
 
+function checkNumOfFilters(username){
+  let options = {
+    url:'/numfilters',
+    headers:{
+      'Content-type':'application/json'
+    },
+    body: JSON.stringify({user_name: username})
+  }
+  request.get(options, (err, res, body) => {
+    if(err){
+      console.log(err);
+      return;
+    }
+
+    console.log(response)
+  })
+}
+
 module.exports = {
   location,
   bedOrBath,
   createFilterPrompt,
   linksToText,
-  compareArrays
+  compareArrays,
+  checkNumOfFilters
 }

@@ -36,6 +36,12 @@ app.use(filtersRoutes);
 
 app.get('/', function (req, res) {res.status(200).send('Hello World!'); });
 
+app.post('/test', function(req, res, next){
+  var userName = req.body.user_name;
+  console.log(dataChecks.checkNumOfFilters(userName))
+  res.status(200).end
+})
+
 
 
 app.get('/api/startscan', function(req, res, next){

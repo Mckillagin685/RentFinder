@@ -515,6 +515,18 @@ var minRentTryAgain = {
   ]
 }
 
+var tooManyFilters = {
+  "text": "Oh-no!! You have too many filters.",
+  "attachments": [
+      {
+          "text": "Please delete a filter with /deletefilter {filterid} command in order to create a new one. \n To list filters /listfilters.",
+          "fallback": "You are unable to error",
+          "color": "#3AA3E3",
+          "attachment_type": "default",
+      }
+  ]
+}
+
 
 module.exports = {
   location,

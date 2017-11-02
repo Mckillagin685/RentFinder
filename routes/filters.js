@@ -16,22 +16,45 @@ router.get('/numfilters', (req, res, next)=>{
     .catch((err)=>{
       console.log(err)
     })
-    return res.sendStatus(500);
 })
 
 router.get('/filters', (req, res, next) => {
-  var username = req.body.user_name;
+  const username = req.body.user_name;
   
     knex('filters')
       .where('user_name', username)
       .then((filters) => {
-        res.send(filters)
+        return res.send(filters);
       })
       .catch((err)=>{
         console.log(err)
-      })
-      // return res.sendStatus(500);
-})
+      });
+});
+
+router.delete('filter', (req, res, next) => {
+  const userName = req.body.user_name;
+  const filterId = req.body.filter_id;
+
+  knex('filters')
+    .where({user_name: userName, id: filterId})
+    .first()
+    .then((filter) => {
+      if(!filter){
+        throw('filter not found')
+      }
+      return knex('filters')
+                .del()
+                .where({user_name: userName, id: filterId})
+    })
+    .then(()=>{
+      delete filterId.id
+
+      res.send(filter)
+    })
+    .catch((err) => {
+      next(err)
+    });
+});
 
 
 module.exports = router;
