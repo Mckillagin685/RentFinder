@@ -37,23 +37,7 @@ router.get('/filters', (req, res, next) => {
 
 //   knex('filters')
 //     .where({user_name: userName, id: filterId})
-//     .first()
-//     .then((filter) => {
-//       if(!filter){
-//         throw('filter not found')
-//       }
-//       return knex('filters')
-//                 .del()
-//                 .where({
-//                   user_name: userName, 
-//                   id: filterId
-//                 })
-//     })
-//     .then(()=>{
-//       delete filterId.id
-
-//       res.send(filter)
-//     })
+//     .del()
 //     .catch((err) => {
 //       console.log(err)
 //     });
