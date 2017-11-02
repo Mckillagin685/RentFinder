@@ -201,8 +201,9 @@ function checkNumOfFilters(username){
       console.log(err);
       return;
     }
+    var parsedBody = JSON.parse(res.body)
 
-    console.log(res.body[0])
+    console.log(parsedBody[0])
   })
 }
 
