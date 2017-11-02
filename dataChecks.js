@@ -21,10 +21,10 @@ function createFilterPrompt(incomingPayload){
       var campus = parseInt(incomingPayload.actions[0].value);
       newFilter = Object.assign(gatherRequestInfo(incomingPayload.team, incomingPayload.channel, incomingPayload.user), location(campus), );
       payload = payloads.bed;
-      payload.attachments[0].callback_id = JSON.stringify(newFilter)
+      payload.attachments[0].callback_id = JSON.stringify(newFilter);
       break;
     case id === "beds":
-      callbackId.beds = bedOrBath(incomingPayload.actions[0].value)
+      callbackId.beds = bedOrBath(incomingPayload.actions[0].value);
       payload = payloads.bath;
       payload.attachments[0].callback_id = JSON.stringify(callbackId);
       break;
@@ -39,22 +39,22 @@ function createFilterPrompt(incomingPayload){
       payload.attachments[0].callback_id = JSON.stringify(callbackId);
       break;
     case id === "maxRent":
-      let max = incomingPayload.actions[0].selected_options[0].value
+      let max = incomingPayload.actions[0].selected_options[0].value;
       let min = callbackId.min;
       payload = minOrMax(min, max, callbackId);
       break;
     case id === "pet_friendly":
-      callbackId.pet_friendly = trueOrFalse(incomingPayload.actions[0].value)
+      callbackId.pet_friendly = trueOrFalse(incomingPayload.actions[0].value);
       payload = payloads.photo;
       payload.attachments[0].callback_id = JSON.stringify(callbackId);
       break;
     case id === "photos":
-      callbackId.photo = trueOrFalse(incomingPayload.actions[0].value)
+      callbackId.photo = trueOrFalse(incomingPayload.actions[0].value);
       payload = payloads.notify;
       payload.attachments[0].callback_id = JSON.stringify(callbackId);
       break;
     case id === "notify":
-      callbackId.notify = trueOrFalse(incomingPayload.actions[0].value)
+      callbackId.notify = trueOrFalse(incomingPayload.actions[0].value);
       if(callbackId.notify === true){
         payload = {
           "text": "I will let you know if I find something"
@@ -188,23 +188,16 @@ function compareArrays(arrA, arrB){
   return true;
 }
 
-function checkNumOfFilters(username){
-  let options = {
-    url:'https://rent-finder.herokuapp.com/numfilters',
-    headers:{
-      'Content-type':'application/json'
-    },
-    body: JSON.stringify({user_name: username})
-  }
-  var result = request.get(options, (err, res, body) => {
-    if(err){
-      console.log(err);
-      return;
-    }
-    var parsedBody = JSON.parse(res.body)
-    return parsedBody[0];
+function checkNumOfFilters(username, cb){
+  knex('filters')
+  .where('user_name', username)
+  .then((filters) => {
+    var filtersLength = filters.length
+    cb(filtersLength);
   })
-  return result;
+  .catch((err)=>{
+    console.log(err)
+  })
 }
 
 module.exports = {

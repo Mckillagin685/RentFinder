@@ -515,6 +515,7 @@ var minRentTryAgain = {
   ]
 }
 
+
 var tooManyFilters = {
   "text": "Oh-no!! You have too many filters.",
   "attachments": [

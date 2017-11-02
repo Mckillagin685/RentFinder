@@ -37,9 +37,7 @@ app.use(filtersRoutes);
 app.get('/', function (req, res) {res.status(200).send('Hello World!'); });
 
 app.post('/test', function(req, res, next){
-  var userName = req.body.user_name;
-  console.log(dataChecks.checkNumOfFilters(userName))
-  res.status(200).end
+  // console.log(dataChecks.checkNumOfFilters())
 })
 
 
@@ -181,6 +179,49 @@ app.post('/createfilter', function(req, res, next){
   }else{
     return res.status(200).end();
   }
+});
+
+app.listen(port, function(){
+  console.log('Listening on port ' + port);
+})
+
+app.post('/deletefilter', function(req, res, next){
+  var userName = req.body.user_name;
+  var filterNum = parseInt(req.body.text);
+
+  let options = {
+    url:'https://rent-finder.herokuapp.com/filter',
+    headers:{
+      'Content-type':'application/json'
+    },
+    body: JSON.stringify({user_name: userName, filter_id: filterNum})
+  }
+
+  request.delete(options, (err, response, body) => {
+    if(err){
+      console.log(err);
+      botPayload = {
+        "text": "Error."
+      }
+    
+      if(userName !== 'rentbot' && req.body.channel_name === 'directmessage'){
+        return res.status(200).json(botPayload);
+      }else{
+        return res.status(200).end();
+      }
+    }
+    botPayload = {
+      "text": "Filter deleted."
+    }
+  
+    if(userName !== 'rentbot' && req.body.channel_name === 'directmessage'){
+      return res.status(200).json(botPayload);
+    }else{
+      return res.status(200).end();
+    }
+
+    response.statusCode(200);
+  })
 });
 
 app.listen(port, function(){
