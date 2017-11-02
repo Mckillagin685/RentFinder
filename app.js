@@ -98,7 +98,7 @@ app.post('/listfilters', function(req, res, next){
       // console.log(filter)
       var field = {
         "title":`Filter ${filter.id}`,
-        "value":`Place: ${filter.city}, \n ${filter.state}, \n Beds: ${filter.beds}, \n baths: ${filter.baths}, \n Price range: ${filter.min}-${filter.max}, \n pet friendly: ${filter.pet_friendly}, \n Show only photos: ${filter.photo}, \n notifications on: ${filter.notify}`,
+        "value":`Place: ${filter.city}, ${filter.state}, \n Beds: ${filter.beds}, \n baths: ${filter.baths}, \n Price range: ${filter.min}-${filter.max}, \n pet friendly: ${filter.pet_friendly}, \n Show only photos: ${filter.photo}, \n notifications on: ${filter.notify}`,
         "short":false
       }
       fields.push(field);
