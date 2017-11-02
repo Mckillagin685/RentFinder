@@ -99,7 +99,7 @@ app.post('/listfilters', function(req, res, next){
       var field = {
         "title":`Filter ${filter.id}`,
         "value":`Place: ${filter.city}, ${filter.state}, \n Beds: ${filter.beds}, \n baths: ${filter.baths}, \n Price range: $${filter.min}-$${filter.max}, \n pet friendly: ${filter.pet_friendly}, \n Show only photos: ${filter.photo}, \n notifications on: ${filter.notify}`,
-        "short":false
+        "short":true
       }
       fields.push(field);
     }
