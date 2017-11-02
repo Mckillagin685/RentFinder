@@ -189,7 +189,6 @@ function compareArrays(arrA, arrB){
 }
 
 function checkNumOfFilters(username){
-  var result;
   let options = {
     url:'https://rent-finder.herokuapp.com/numfilters',
     headers:{
@@ -198,14 +197,14 @@ function checkNumOfFilters(username){
     body: JSON.stringify({user_name: username})
   }
   request.get(options, (err, res, body) => {
+    var result;
     if(err){
       console.log(err);
       return;
     }
     var parsedBody = JSON.parse(res.body)
-    result = parsedBody[0];
+    return result = parsedBody[0];
   })
-  return result;
 }
 
 module.exports = {
