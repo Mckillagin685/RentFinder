@@ -105,7 +105,7 @@ app.post('/listfilters', function(req, res, next){
 
   console.log(fields)
 
-  botPayload = {
+  var botPayload = {
     "text":"Here are your filters",
     "fields": fields
   }
