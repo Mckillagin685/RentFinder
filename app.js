@@ -92,6 +92,7 @@ app.post('/listfilters', function(req, res, next){
       console.log(err);
       return;
     }
+    console.log('above')
     console.log(body)
   })
 
