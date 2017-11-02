@@ -94,8 +94,6 @@ app.post('/listfilters', function(req, res, next){
       console.log(err);
       return;
     }
-    console.log('above')
-    console.log(body)
     for (let filter in body){
       var field = {
         "title":`Filter ${filter.id}`,
@@ -108,6 +106,7 @@ app.post('/listfilters', function(req, res, next){
       "text":"Here are your filters",
       "fields": fields
     }
+    console.log(botPayload)
   })
 
   if(userName !== 'rentbot'){
