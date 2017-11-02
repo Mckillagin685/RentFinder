@@ -102,6 +102,7 @@ app.post('/listfilters', function(req, res, next){
         "short":false
       }
       fields.push(field);
+      console.log(fields)
     }
   })
 
