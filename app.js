@@ -95,7 +95,7 @@ app.post('/listfilters', function(req, res, next){
       return;
     }
     console.log('above')
-    console.log(body)
+    console.log(body[0])
     // for (let filter in body){
     //   var field = {
     //     "title":`Filter ${filter.id}`,
