@@ -515,20 +515,6 @@ var minRentTryAgain = {
   ]
 }
 
-// var userNotify = {
-//   // "text": "Hey " + user_name + " we found some results for you!!!",
-//   "attachments": [
-//     {
-//       "token" : "dbQN0UHau0QG6deDMzwLzkMg",
-//       // "team_id": ,
-//       // "team_domain":,
-//       // "channel_id":,
-//       "channel_name" : "directmessage",
-//       // "text": "Here are the results for your filter: " + filter_id + ".",
-
-//     }
-//   ]
-// }
 
 module.exports = {
   location,
@@ -540,5 +526,4 @@ module.exports = {
   photo,
   notify,
   minRentTryAgain,
-  // userNotify
 }

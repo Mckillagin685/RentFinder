@@ -78,6 +78,7 @@ app.post('/listfilters', function(req, res, next){
   var filterNum = req.body.text;
   var userName = req.body.user_name;
   var reqObject = {user_name: userName};
+  var fields = [];
 
   let options = {
     url: 'https://rent-finder.herokuapp.com/filters',
@@ -94,6 +95,24 @@ app.post('/listfilters', function(req, res, next){
     }
     console.log('above')
     console.log(body)
+    for (let filter in body){
+      var field = {
+        "title":`Filter ${filter.id}`,
+        "value":`Place ${filter.city}, ${filter.state}, Beds: ${filter.beds}, baths: ${filter.baths}, Price range ${filter.min}-${filter.max}, \n pet friendly:${filter.pet_friendly}, Show only photos:${filter.photo}, notifications on:${filter.notify}`,
+        "short":false
+      }
+      fields.push(field);
+    }
+    var botPayload = {
+      "text":"Here are your filters",
+      "fields": fields
+    }
+
+    if(userName !== 'rentbot'){
+      return res.status(200).json(botPayload);
+    }else{
+      return res.status(200).end();
+    }
   })
 
   return res.status(200).end();
