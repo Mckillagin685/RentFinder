@@ -11,7 +11,7 @@ router.get('/numfilters', (req, res, next)=>{
     .where('user_name', username)
     .then((filters) => {
       var filtersLength = filters.length
-      res.send(filtersLength)
+      res.send([filtersLength])
     })
     .catch((err)=>{
       console.log(err)
