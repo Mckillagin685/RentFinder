@@ -196,15 +196,15 @@ function checkNumOfFilters(username){
     },
     body: JSON.stringify({user_name: username})
   }
-  request.get(options, (err, res, body) => {
-    var result;
+  var result = request.get(options, (err, res, body) => {
     if(err){
       console.log(err);
       return;
     }
     var parsedBody = JSON.parse(res.body)
-    return result = parsedBody[0];
+    return parsedBody[0];
   })
+  return result;
 }
 
 module.exports = {
