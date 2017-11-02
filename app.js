@@ -103,22 +103,18 @@ app.post('/listfilters', function(req, res, next){
       }
       fields.push(field);
     }
+
+    var botPayload = {
+      "text":"Here are your filters",
+      "fields": fields
+    }
+
+    if(userName !== 'rentbot'){
+      return res.status(200).json(botPayload);
+    }else{
+      return res.status(200).end();
+    }
   })
-
-  console.log(fields)
-
-  var botPayload = {
-    "text":"Here are your filters",
-    "fields": fields
-  }
-
-  // console.log(botPayload)
-
-  if(userName !== 'rentbot'){
-    return res.status(200).json(botPayload);
-  }else{
-    return res.status(200).end();
-  }
 })
 
 app.post('/wakeup', function(req, res, next){
