@@ -203,7 +203,7 @@ function checkNumOfFilters(username){
     }
     var parsedBody = JSON.parse(res.body)
 
-    console.log(parsedBody[0])
+    return parsedBody[0];
   })
 }
 

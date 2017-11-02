@@ -519,7 +519,7 @@ var tooManyFilters = {
   "text": "Oh-no!! You have too many filters.",
   "attachments": [
       {
-          "text": "Please delete a filter with /deletefilter {filterid} command in order to create a new one. \n To list filters /listfilters.",
+          "text": "Please delete a filter with '/deletefilter {filterid}' command in order to create a new one. \n If you do not know which to delete, list filters with '/listfilters' command.",
           "fallback": "You are unable to error",
           "color": "#3AA3E3",
           "attachment_type": "default",
