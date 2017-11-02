@@ -31,17 +31,17 @@ router.get('/filters', (req, res, next) => {
       });
 });
 
-// router.delete('/filter', (req, res, next) => {
-//   const userName = req.body.user_name;
-//   const filterId = req.body.filter_id;
+router.delete('/filter', (req, res, next) => {
+  const userName = req.body.user_name;
+  const filterId = req.body.filter_id;
 
-//   knex('filters')
-//     .where({user_name: userName, id: filterId})
-//     .del()
-//     .catch((err) => {
-//       console.log(err)
-//     });
-// });
+  knex('filters')
+    .where({user_name: userName, id: filterId})
+    .del()
+    .catch((err) => {
+      console.log(err)
+    });
+});
 
 
 module.exports = router;
