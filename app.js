@@ -79,6 +79,7 @@ app.post('/listfilters', function(req, res, next){
   var userName = req.body.user_name;
   var reqObject = {user_name: userName};
   var fields = [];
+  var botPayload;
 
   let options = {
     url: 'https://rent-finder.herokuapp.com/filters',
@@ -103,19 +104,17 @@ app.post('/listfilters', function(req, res, next){
       }
       fields.push(field);
     }
-    var botPayload = {
+    botPayload = {
       "text":"Here are your filters",
       "fields": fields
     }
-
-    if(userName !== 'rentbot'){
-      return res.status(200).json(botPayload);
-    }else{
-      return res.status(200).end();
-    }
   })
 
-  return res.status(200).end();
+  if(userName !== 'rentbot'){
+    return res.status(200).json(botPayload);
+  }else{
+    return res.status(200).end();
+  }
 })
 
 app.post('/wakeup', function(req, res, next){
