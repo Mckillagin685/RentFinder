@@ -105,14 +105,14 @@ app.post('/listfilters', function(req, res, next){
     }
   })
 
-  // console.log(fields)
+  console.log(fields)
 
   var botPayload = {
     "text":"Here are your filters",
     "fields": fields
   }
 
-  console.log(botPayload)
+  // console.log(botPayload)
 
   if(userName !== 'rentbot'){
     return res.status(200).json(botPayload);
