@@ -95,6 +95,7 @@ app.post('/listfilters', function(req, res, next){
     }
     var resbody = JSON.parse(body);
     for (let filter in resbody){
+      console.log(filter)
       var field = {
         "title":`Filter ${filter.id}`,
         "value":`Place ${filter.city}, ${filter.state}, Beds: ${filter.beds}, baths: ${filter.baths}, Price range ${filter.min}-${filter.max}, \n pet friendly:${filter.pet_friendly}, Show only photos:${filter.photo}, notifications on:${filter.notify}`,
