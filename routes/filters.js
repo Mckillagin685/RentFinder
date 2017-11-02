@@ -55,7 +55,7 @@ router.delete('/filter', (req, res, next) => {
       res.send(filter)
     })
     .catch((err) => {
-      next(err)
+      console.log(err)
     });
 });
 
