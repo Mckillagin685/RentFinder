@@ -168,9 +168,9 @@ function gatherRequestInfo(team, channel, user){
 }
 
 function linksToText (links){
-  var parsedLinks = JSON.stringify(links);
+  var parsedLinks = JSON.parse(links);
   var result = " ";
-  for(let link in parsedLinks){
+  for(let link of parsedLinks){
     result += `<${link}>, \n`
   }
   console.log(result)
