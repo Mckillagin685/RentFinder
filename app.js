@@ -41,15 +41,7 @@ const checknum = function(req, res, next) {
 
     next()
   })
-  // jwt.verify(req.cookies.token, process.env.JWT_KEY, (err, playload) => {
-  //   if (err) {
-  //     return next(boom.create(401, 'Unauthorized'));
-  //   }
 
-  //   req.claim = playload;
-
-  //   next();
-  // });
 };
 
 app.get('/', function (req, res) {res.status(200).send('Hello World!'); });
