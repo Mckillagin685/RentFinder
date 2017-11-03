@@ -171,7 +171,7 @@ function linksToText (links){
   var parsedLinks = JSON.parse(links);
   var result = " ";
   for(let link of parsedLinks){
-    result += `${parsedLinks.indexOf(link)}: <${link}>, \n \n`
+    result += `${parsedLinks.indexOf(link) + 1}: <${link}>, \n \n`
   }
   console.log(result)
   return result
