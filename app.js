@@ -39,7 +39,7 @@ const checknum = function(req, res, next) {
       return res.send(payloads.tooManyFilters).end()
     }
 
-    next
+    next()
   })
   // jwt.verify(req.cookies.token, process.env.JWT_KEY, (err, playload) => {
   //   if (err) {
