@@ -63,7 +63,7 @@ router.post('/scheduledscraper', (req, res, next) => {
 
             return knex('links')
               .where('filter_uuid', object.filter_uuid)
-              .update({links: result})
+              .update({links: JSON.stringify(result)})
               .catch((err)=>{
                 console.log(err)
               });
@@ -80,7 +80,7 @@ router.post('/scheduledscraper', (req, res, next) => {
 })
 
 router.get('/listlinks', (res, req, next) => {
-  console.log(req)
+  console.log(Object.Keys(req))
   console.log('type:', typeof req.body)
   console.log(req.body)
   // var userName = req.body.user_name;
