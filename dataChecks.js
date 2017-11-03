@@ -18,10 +18,16 @@ function createFilterPrompt(incomingPayload){
 
   switch(true){
     case id === "location":
-      var campus = parseInt(incomingPayload.actions[0].value);
-      newFilter = Object.assign(gatherRequestInfo(incomingPayload.team, incomingPayload.channel, incomingPayload.user), location(campus), );
-      payload = payloads.bed;
-      payload.attachments[0].callback_id = JSON.stringify(newFilter);
+      if(incomingPayload.actions[0].value === "more"){
+        payload = payloads.location2;
+      }else if(incomingPayload.actions[0].value === "back"){
+        payload = payloads.location;
+      }else{
+        var campus = parseInt(incomingPayload.actions[0].value);
+        newFilter = Object.assign(gatherRequestInfo(incomingPayload.team, incomingPayload.channel, incomingPayload.user), location(campus), );
+        payload = payloads.bed;
+        payload.attachments[0].callback_id = JSON.stringify(newFilter);
+      }
       break;
     case id === "beds":
       callbackId.beds = bedOrBath(incomingPayload.actions[0].value);

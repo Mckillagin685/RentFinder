@@ -10,6 +10,18 @@ var location = {
           "actions": [
               {
                   "name": "location",
+                  "text": "Seattle, WA",
+                  "type": "button",
+                  "value": 98104
+              },
+              {
+                  "name": "location",
+                  "text": "San Francisco, CA",
+                  "type": "button",
+                  "value": 94105
+              },
+              {
+                  "name": "location",
                   "text": "Austin, TX",
                   "type": "button",
                   "value": 78701
@@ -20,6 +32,27 @@ var location = {
                   "type": "button",
                   "value": 80302
               },
+              {
+                "name": "location",
+                "text": "More campuses",
+                "type": "button",
+                "value": "more"
+              },
+          ]
+      }
+  ]
+};
+
+var location2 = {
+  "text": "What campus are you attending?",
+  "attachments": [
+      {
+          "text": "Choose your current campus",
+          "fallback": "You are unable to choose a campus",
+          "callback_id": "location",
+          "color": "#3AA3E3",
+          "attachment_type": "default",
+          "actions": [
               {
                   "name": "location",
                   "text": "Denver, CO (Platte)",
@@ -46,16 +79,12 @@ var location = {
               },
               {
                   "name": "location",
-                  "text": "San Francisco, CA",
+                  "text": "BACK",
+                  "style": "danger",
                   "type": "button",
-                  "value": 94105
+                  "value": "back"
               },
-              {
-                  "name": "location",
-                  "text": "Seattle, WA",
-                  "type": "button",
-                  "value": 98104
-              }
+
           ]
       }
   ]
@@ -540,6 +569,7 @@ var noFilters = {
 
 module.exports = {
   location,
+  location2,
   bed,
   bath,
   minRent,
