@@ -528,6 +528,18 @@ var tooManyFilters = {
   ]
 }
 
+var noFilters = {
+  "text": "Oh-no!! You don't have any filters.",
+  "attachments": [
+      {
+          "text": "To make a filter use the '/createfilter' command.",
+          "fallback": "You are unable to error",
+          "color": "#3AA3E3",
+          "attachment_type": "default",
+      }
+  ]
+}
+
 
 module.exports = {
   location,
@@ -540,4 +552,5 @@ module.exports = {
   notify,
   minRentTryAgain,
   tooManyFilters,
+  noFilters
 }

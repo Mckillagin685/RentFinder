@@ -46,11 +46,30 @@ const checknum = function(req, res, next) {
 
 app.get('/', function (req, res) {res.status(200).send('Hello World!'); });
 
-app.post('/test', checknum ,function(req, res, next){
+app.post('/test', function(req, res, next){
   
 })
 
+app.get('/listresults', (req, res, next) => {
+  var userName = req.body.user_name;
+  var filterId = parseInt(req.body.text);
 
+  let options = {
+    url: 'https://rent-finder.herokuapp.com/listresults',
+    headers:{
+      'Content-type':'application/json'
+    },
+    body: JSON.stringify({user_name: userName, filter_id: filterId})
+  }
+
+  request.get(options, (err, response, body) => {
+    if(err){
+      console.log(err);
+      return;
+    }
+    console.log(body)
+  })
+}) 
 
 app.get('/api/startscan', function(req, res, next){
   console.log('in /api/startscan')
@@ -109,7 +128,6 @@ app.post('/listfilters', function(req, res, next){
     }
     var resbody = JSON.parse(body);
     for (let filter of resbody){
-      // console.log(filter)
       var field = {
         "title":`Filter ${filter.id}`,
         "value":`Place: ${filter.city}, ${filter.state}, \n Beds: ${filter.beds}, \n baths: ${filter.baths}, \n Price range: $${filter.min}-$${filter.max}, \n pet friendly: ${filter.pet_friendly}, \n Show only photos: ${filter.photo}, \n notifications on: ${filter.notify}`,
