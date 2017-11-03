@@ -29,7 +29,7 @@ const checknum = function(req, res, next) {
     body: JSON.stringify({user_name: userName})
   }
 
-  request.get(options, (req, response, next) => {
+  request.get(options, (err, response, body) => {
     if(err){
       console.log(err);
       return;
