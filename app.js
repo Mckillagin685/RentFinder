@@ -54,21 +54,23 @@ app.get('/listresults', (req, res, next) => {
   var userName = req.body.user_name;
   var filterId = parseInt(req.body.text);
 
-  let options = {
-    url: 'https://rent-finder.herokuapp.com/listlinks',
-    headers:{
-      'Content-type':'application/json'
-    },
-    body: JSON.stringify({user_name: userName, filter_id: filterId})
-  }
+  console.log(filterId)
 
-  request.get(options, (err, response, body) => {
-    if(err){
-      console.log(err);
-      return;
-    }
-    console.log(body)
-  })
+  // let options = {
+  //   url: 'https://rent-finder.herokuapp.com/listlinks',
+  //   headers:{
+  //     'Content-type':'application/json'
+  //   },
+  //   body: JSON.stringify({user_name: userName, filter_id: filterId})
+  // }
+
+  // request.get(options, (err, response, body) => {
+  //   if(err){
+  //     console.log(err);
+  //     return;
+  //   }
+  //   console.log(body)
+  // })
 }) 
 
 app.get('/api/startscan', function(req, res, next){
