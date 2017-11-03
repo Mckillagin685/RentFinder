@@ -55,7 +55,7 @@ app.get('/listresults', (req, res, next) => {
   var filterId = parseInt(req.body.text);
 
   let options = {
-    url: 'https://rent-finder.herokuapp.com/links',
+    url: 'https://rent-finder.herokuapp.com/listlinks',
     headers:{
       'Content-type':'application/json'
     },
