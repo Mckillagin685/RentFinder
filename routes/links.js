@@ -90,9 +90,10 @@ router.get('/listlinks', (req, res, next) => {
     .then((filter) => {
       console.log(filter[0].uuid)
       knex('links')
-        .where({filter_uuid: filter.uuid})
+        .where({filter_uuid: filter[0].uuid})
         .then((links) => {
-          return res.send(links.links);
+          console.log(links)
+          // return res.send(links.links);
         })
     })
 })
