@@ -138,7 +138,7 @@ function minOrMax(min, max, callbackId){
   console.log('max: ', max)
   console.log(min, max)
   var result;
-  if (min > max){
+  if (min < max){
     callbackId.max = max;
     result = payloads.pet;
     result.attachments[0].callback_id = JSON.stringify(callbackId);
