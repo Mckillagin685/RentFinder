@@ -88,7 +88,7 @@ router.get('/listlinks', (req, res, next) => {
   knex('filters')
     .where({user_name: userName, id: filterId})
     .then((filter) => {
-      console.log(filter)
+      console.log(filter][0])
       knex('links')
         .where({filter_uuid: filter.uuid})
         .then((links) => {
