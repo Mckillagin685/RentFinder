@@ -19,24 +19,24 @@ app.use(message);
 app.use(filtersRoutes);
 
 const checknum = function(req, res, next) {
-  console.log(req.body.user_name)
+  var userName = req.body.user_name;
 
-  // let options = {
-  //   url:'https://rent-finder.herokuapp.com/numfilters',
-  //   headers:{
-  //     'Content-type':'application/json'
-  //   },
-  //   body: JSON.stringify({user_name: userName})
-  // }
+  let options = {
+    url:'https://rent-finder.herokuapp.com/numfilters',
+    headers:{
+      'Content-type':'application/json'
+    },
+    body: JSON.stringify({user_name: userName})
+  }
 
-  // request.get(options, (req, response, next) => {
-  //   if(err){
-  //     console.log(err);
-  //     return;
-  //   }
-  //   var parsedBody = JSON.parse(response.body)
-  //   console.log(parsedBody[0]);
-  // })
+  request.get(options, (req, response, next) => {
+    if(err){
+      console.log(err);
+      return;
+    }
+    var parsedBody = JSON.parse(response.body)
+    console.log(parsedBody[0]);
+  })
   // jwt.verify(req.cookies.token, process.env.JWT_KEY, (err, playload) => {
   //   if (err) {
   //     return next(boom.create(401, 'Unauthorized'));
