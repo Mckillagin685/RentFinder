@@ -55,6 +55,18 @@ function createFilterPrompt(incomingPayload){
       break;
     case id === "notify":
       callbackId.notify = trueOrFalse(incomingPayload.actions[0].value);
+      callbackId.uuid = uuid.v4()
+
+      knex('filters')
+      .insert(callbackId, '*')
+      .catch((err) => {
+        console.log(err)
+        payload = {
+          "text": "Oops something when wrong on our end, \n \n please try again later."
+        }
+      })
+      console.log(callbackId)
+
       if(callbackId.notify === true){
         payload = {
           "text": "I will let you know if I find something"
@@ -63,17 +75,22 @@ function createFilterPrompt(incomingPayload){
         payload = {
           "text": "If you wish to view results use the command /listResults"
         }
-      }
-      callbackId.uuid = uuid.v4()
-      knex('filters')
-        .insert(callbackId, '*')
-        .catch((err) => {
-          console.log(err)
-          payload = {
-            "text": "Oops something when wrong on our end, \n \n please try again later."
+        let options = {
+          url:'https://rent-finder.herokuapp.com/scrapenow',
+          headers:{
+            'Content-type':'application/json'
+          },
+          body: JSON.stringify(callbackId)
+        }
+
+        request.post(options, (err, res, body) => {
+          if(err){
+            console.log(err);
+            return
           }
+          console.log(body);
         })
-      console.log(callbackId)
+      }
       break;
     default:
       throw("Something went wrong")
