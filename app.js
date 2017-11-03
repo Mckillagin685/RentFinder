@@ -144,7 +144,7 @@ app.get('/api/startscan', function(req, res, next){
     return res.status(200).end();
 })
 
-app.post('/listfilters', checkNumMin,function(req, res, next){
+app.post('/listfilters', checkNumMin, function(req, res, next){
   var filterNum = req.body.text;
   var userName = req.body.user_name;
   var reqObject = {user_name: userName};
