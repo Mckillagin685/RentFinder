@@ -35,7 +35,7 @@ const checknum = function(req, res, next) {
       return;
     }
     var parsedBody = JSON.parse(response.body)
-    if(parsedBody[0] >= 3){
+    if(parsedBody[0] >= 4){
       return res.send(payloads.tooManyFilters).end()
     }
 
@@ -191,7 +191,7 @@ app.post('/sayback', function(req, res, next){
 });
 
 
-app.post('/createfilter', function(req, res, next){
+app.post('/createfilter', checknum, function(req, res, next){
   var userName = req.body.user_name;
   var botPayload = payloads.location;
 
