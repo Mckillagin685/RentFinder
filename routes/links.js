@@ -80,6 +80,7 @@ router.post('/scheduledscraper', (req, res, next) => {
 })
 
 router.get('/listlinks', (res, req, next) => {
+  console.log(req)
   console.log('type:', typeof req.body)
   console.log(req.body)
   // var userName = req.body.user_name;
