@@ -64,6 +64,7 @@ function createFilterPrompt(incomingPayload){
           "text": "If you wish to view results use the command /listResults"
         }
       }
+      callbackId.uuid = uuid.v4()
       knex('filters')
         .insert(callbackId, '*')
         .catch((err) => {
@@ -167,7 +168,6 @@ function gatherRequestInfo(team, channel, user){
   // result.channel_id = channel.id;
   // result.channel_name = channel.name;
   // result.user_id = user.id;
-  result.uuid = uuid.v4()
   result.user_name = user.name
   return result;
 }
