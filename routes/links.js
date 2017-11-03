@@ -79,7 +79,7 @@ router.post('/scheduledscraper', (req, res, next) => {
   })
 })
 
-router.get('/listlinks', (res, req, next) => {
+router.get('/listlinks', (req, res, next) => {
   console.log(Object.keys(req))
   console.log('type:', typeof req.body)
   console.log(req.body)
