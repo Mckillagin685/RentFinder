@@ -18,7 +18,7 @@ app.use(links);
 app.use(message);
 app.use(filtersRoutes);
 
-const checknum = function(req, res, next) {
+const checkNumMax = function(req, res, next) {
   var userName = req.body.user_name;
 
   let options = {
@@ -37,6 +37,32 @@ const checknum = function(req, res, next) {
     var parsedBody = JSON.parse(response.body)
     if(parsedBody[0] >= 4){
       return res.send(payloads.tooManyFilters).end()
+    }
+
+    next()
+  })
+
+};
+
+const checkNumMin = function(req, res, next) {
+  var userName = req.body.user_name;
+
+  let options = {
+    url:'https://rent-finder.herokuapp.com/numfilters',
+    headers:{
+      'Content-type':'application/json'
+    },
+    body: JSON.stringify({user_name: userName})
+  }
+
+  request.get(options, (err, response, body) => {
+    if(err){
+      console.log(err);
+      return;
+    }
+    var parsedBody = JSON.parse(response.body)
+    if(parsedBody[0] <= 0){
+      return res.send(payloads.noFilters).end()
     }
 
     next()
@@ -118,7 +144,7 @@ app.get('/api/startscan', function(req, res, next){
     return res.status(200).end();
 })
 
-app.post('/listfilters', function(req, res, next){
+app.post('/listfilters', checkNumMin,function(req, res, next){
   var filterNum = req.body.text;
   var userName = req.body.user_name;
   var reqObject = {user_name: userName};
@@ -212,7 +238,7 @@ app.post('/sayback', function(req, res, next){
 });
 
 
-app.post('/createfilter', checknum, function(req, res, next){
+app.post('/createfilter', checkNumMax, function(req, res, next){
   var userName = req.body.user_name;
   var botPayload = payloads.location;
 
@@ -223,7 +249,7 @@ app.post('/createfilter', checknum, function(req, res, next){
   }
 });
 
-app.post('/deletefilter', function(req, res, next){
+app.post('/deletefilter', checkNumMin,function(req, res, next){
   var userName = req.body.user_name;
   var filterNum = parseInt(req.body.text);
 

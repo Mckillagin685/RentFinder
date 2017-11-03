@@ -34,12 +34,12 @@ function createFilterPrompt(incomingPayload){
       payload.attachments[0].callback_id = JSON.stringify(callbackId);
       break;
     case id === "minRent":
-      callbackId.min = incomingPayload.actions[0].selected_options[0].value;
+      callbackId.min = parseInt(incomingPayload.actions[0].selected_options[0].value);
       payload = payloads.maxRent;
       payload.attachments[0].callback_id = JSON.stringify(callbackId);
       break;
     case id === "maxRent":
-      let max = incomingPayload.actions[0].selected_options[0].value;
+      let max = (incomingPayload.actions[0].selected_options[0].value);
       let min = callbackId.min;
       payload = minOrMax(min, max, callbackId);
       break;
