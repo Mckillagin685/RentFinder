@@ -278,6 +278,17 @@ app.post('/deletefilter', checkNumMin,function(req, res, next){
   }
 });
 
+app.post('/help', (req, res, next) => {
+  var userName = req.body.user_name; 
+  var botPayload= payloads.help;
+
+  if(userName !== 'rentbot' && req.body.channel_name === 'directmessage'){
+    return res.status(200).json(botPayload);
+  }else{
+    return res.status(200).end();
+}
+})
+
 app.listen(port, function(){
   console.log('Listening on port ' + port);
 })
