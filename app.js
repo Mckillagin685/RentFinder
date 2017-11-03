@@ -67,7 +67,17 @@ app.post('/listresults', function(req, res, next){
       console.log(err);
       return;
     }
-    console.log(body)
+
+    var attachmentText = dataChecks.linksToText(body);
+    console.log(attachmentText)
+    var botPayload = {
+      "text": `Here are your results for filter ${filterId}.`,
+      "attachments":[
+        {
+          "text": attachmentText
+        }
+      ]
+    }
   })
 }) 
 

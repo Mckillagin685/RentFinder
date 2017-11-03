@@ -170,7 +170,7 @@ function gatherRequestInfo(team, channel, user){
 function linksToText (links){
   var result = " ";
   for(let link in links){
-    result += `${link}, \n`
+    result += `<${link}>, \n`
   }
   return result
 }
@@ -188,23 +188,10 @@ function compareArrays(arrA, arrB){
   return true;
 }
 
-// function checkNumOfFilters(username, cb){
-//   knex('filters')
-//   .where('user_name', username)
-//   .then((filters) => {
-//     var filtersLength = filters.length
-//     cb(filtersLength);
-//   })
-//   .catch((err)=>{
-//     console.log(err)
-//   })
-// }
-
 module.exports = {
   location,
   bedOrBath,
   createFilterPrompt,
   linksToText,
   compareArrays,
-  // checkNumOfFilters,
 }
