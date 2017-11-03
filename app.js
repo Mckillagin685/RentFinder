@@ -35,7 +35,11 @@ const checknum = function(req, res, next) {
       return;
     }
     var parsedBody = JSON.parse(response.body)
-    console.log(parsedBody[0]);
+    if(parsedBody[0] >= 3){
+      return res.send(payloads.tooManyFilters).end()
+    }
+
+    next
   })
   // jwt.verify(req.cookies.token, process.env.JWT_KEY, (err, playload) => {
   //   if (err) {

@@ -539,4 +539,5 @@ module.exports = {
   photo,
   notify,
   minRentTryAgain,
+  tooManyFilters,
 }
