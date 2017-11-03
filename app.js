@@ -18,27 +18,41 @@ app.use(links);
 app.use(message);
 app.use(filtersRoutes);
 
-// app.use((_req, res) => {
-//   res.sendStatus(404);
-// });
+const checknum = function(req, res, next) {
+  console.log(req.body.user_name)
 
-// app.use((err, _req, res, _next) => {
-//   if (err.output && err.output.statusCode) {
-//     return res
-//       .status(err.output.statusCode)
-//       .set('Content-Type', 'text/plain')
-//       .send(err.message);
-//   }
+  // let options = {
+  //   url:'https://rent-finder.herokuapp.com/numfilters',
+  //   headers:{
+  //     'Content-type':'application/json'
+  //   },
+  //   body: JSON.stringify({user_name: userName})
+  // }
 
-//   console.error(err.stack);
-//   res.sendStatus(500);
-// });
+  // request.get(options, (req, response, next) => {
+  //   if(err){
+  //     console.log(err);
+  //     return;
+  //   }
+  //   var parsedBody = JSON.parse(response.body)
+  //   console.log(parsedBody[0]);
+  })
+  // jwt.verify(req.cookies.token, process.env.JWT_KEY, (err, playload) => {
+  //   if (err) {
+  //     return next(boom.create(401, 'Unauthorized'));
+  //   }
+
+  //   req.claim = playload;
+
+  //   next();
+  // });
+};
 
 app.get('/', function (req, res) {res.status(200).send('Hello World!'); });
 
-// app.post('/test', function(req, res, next){
-//   // console.log(dataChecks.checkNumOfFilters())
-// })
+app.post('/test', checknum ,function(req, res, next){
+  
+})
 
 
 
