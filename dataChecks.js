@@ -41,7 +41,7 @@ function createFilterPrompt(incomingPayload){
     case id === "maxRent":
       let max = (incomingPayload.actions[0].selected_options[0].value);
       let min = callbackId.min;
-      payload = minOrMax(min, max, callbackId);
+      payload = minOrMax(min, parseInt(max), callbackId);
       break;
     case id === "pet_friendly":
       callbackId.pet_friendly = trueOrFalse(incomingPayload.actions[0].value);
