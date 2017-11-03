@@ -363,7 +363,6 @@ var pet = {
   "text": "Would you like your rental to be pet friendly?",
   "attachments": [
       {
-          "text": "Click a button to choose",
           "fallback": "You are unable to choose",
           "color": "#3AA3E3",
           "attachment_type": "default",
@@ -386,10 +385,9 @@ var pet = {
 }
 
 var photo = {
-  "text": "Would you like me to show you rentals only with photos?",
+  "text": "Would you like me to show you rentals with and without photos? or only with photos?",
   "attachments": [
       {
-          "text": "Click a button to choose",
           "fallback": "You are unable to choose",
           "color": "#3AA3E3",
           "attachment_type": "default",
@@ -415,7 +413,6 @@ var notify = {
   "text": "Would you like me to notify you every other hour IF I find something new?",
   "attachments": [
       {
-          "text": "Click a button to choose",
           "fallback": "You are unable to choose",
           "color": "#3AA3E3",
           "attachment_type": "default",
