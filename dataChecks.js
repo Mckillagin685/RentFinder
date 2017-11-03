@@ -138,11 +138,12 @@ function minOrMax(min, max, callbackId){
     callbackId.max = max;
     result = payloads.pet;
     result.attachments[0].callback_id = JSON.stringify(callbackId);
+    return result;
   }else{
     result = payloads.minRentTryAgain;
     result.attachments[0].callback_id = JSON.stringify(callbackId);
+    return result;
   }
-  return result;
 }
 
 function trueOrFalse(value){
