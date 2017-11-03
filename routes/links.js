@@ -79,7 +79,7 @@ router.post('/scheduledscraper', (req, res, next) => {
   })
 })
 
-router.get('/listresults', (res, req, next) => {
+router.get('/listlinks', (res, req, next) => {
   var userName = req.body.user_name;
   var filterId = req.body.filter_id;
 
