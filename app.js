@@ -50,7 +50,7 @@ app.post('/test', function(req, res, next){
   
 })
 
-app.get('/listresults', function(req, res, next){
+app.post('/listresults', function(req, res, next){
   var userName = req.body.user_name;
   var filterId = parseInt(req.body.text);
 
