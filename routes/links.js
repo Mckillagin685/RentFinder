@@ -80,18 +80,19 @@ router.post('/scheduledscraper', (req, res, next) => {
 })
 
 router.get('/listlinks', (res, req, next) => {
-  var userName = req.body.user_name;
-  var filterId = req.body.filter_id;
+  console.log(req)
+  // var userName = req.body.user_name;
+  // var filterId = req.body.filter_id;
 
-  knex('filters')
-    .where({user_name: userName, id: filterId})
-    .then((filter) => {
-      knex('links')
-        .where({filter_uuid: filter.uuid})
-        .then((links) => {
-          return res.send(links.links);
-        })
-    })
+  // knex('filters')
+  //   .where({user_name: userName, id: filterId})
+  //   .then((filter) => {
+  //     knex('links')
+  //       .where({filter_uuid: filter.uuid})
+  //       .then((links) => {
+  //         return res.send(links.links);
+  //       })
+  //   })
 })
 
 module.exports = router
