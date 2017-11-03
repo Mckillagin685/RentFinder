@@ -36,7 +36,7 @@ const checknum = function(req, res, next) {
   //   }
   //   var parsedBody = JSON.parse(response.body)
   //   console.log(parsedBody[0]);
-  })
+  // })
   // jwt.verify(req.cookies.token, process.env.JWT_KEY, (err, playload) => {
   //   if (err) {
   //     return next(boom.create(401, 'Unauthorized'));
