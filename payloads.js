@@ -570,7 +570,7 @@ var help = {
   "text": "Sure here are some basic commands",
   "attachments": [
       {
-          "text": "To make a filter use the '/createfilter' command. \n To see a filters results use the '/listresults' followed by the filter id. \n To see the filters you have made use the '/listfilters' command. \n To delete a filter use the '/deletefilter' command followed by the filter id. ",
+          "text": "To make a filter use the '/createfilter' command. \n \n To see a filters results use the '/listresults' followed by the filter id. \n \n To see the filters you have made use the '/listfilters' command. \n \n To delete a filter use the '/deletefilter' command followed by the filter id. ",
           "fallback": "You are unable to see help",
           "color": "#3AA3E3",
           "attachment_type": "default",
