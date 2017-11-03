@@ -132,6 +132,8 @@ function bedOrBath(b){
   }
 
 function minOrMax(min, max, callbackId){
+  console.log('min: ', typeof min);
+  console.log('max: ', typeof max)
   console.log(min, max)
   var result;
   if (min > max){
