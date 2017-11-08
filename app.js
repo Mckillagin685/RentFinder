@@ -1,9 +1,10 @@
+var urlConfig = require('./slack-pads.config.js');
 var dataChecks = require('./dataChecks');
 var payloads = require('./payloads');
-var knex = require('./knex')
+var knex = require('./knex');
 var express = require('express');
 var bodyParser = require('body-parser');
-var request = require('request')
+var request = require('request');
 var app = express();
 var port = process.env.PORT || 1337;
 
@@ -22,7 +23,7 @@ const checkNumMax = function(req, res, next) {
   var userName = req.body.user_name;
 
   let options = {
-    url:'https://rent-finder.herokuapp.com/numfilters',
+    url: `${urlConfig.deployUrl}numfilters`,
     headers:{
       'Content-type':'application/json'
     },
@@ -48,7 +49,7 @@ const checkNumMin = function(req, res, next) {
   var userName = req.body.user_name;
 
   let options = {
-    url:'https://rent-finder.herokuapp.com/numfilters',
+    url: `${urlConfig.deployUrl}numfilters`,
     headers:{
       'Content-type':'application/json'
     },
@@ -81,7 +82,7 @@ app.post('/listresults', function(req, res, next){
   var filterId = parseInt(req.body.text);
 
   let options = {
-    url: 'https://rent-finder.herokuapp.com/listlinks',
+    url: `${urlConfig.deployUrl}listlinks`,
     headers:{
       'Content-type':'application/json'
     },
@@ -117,7 +118,7 @@ app.get('/api/startscan', function(req, res, next){
       for(let filter of filters){
 
         let options = {
-          url: 'https://rent-finder.herokuapp.com/scheduledscraper',
+          url: `${urlConfig.deployUrl}scheduledscraper`,
           headers:{
             'Content-type':'application/json'
           },
@@ -151,7 +152,7 @@ app.post('/listfilters', checkNumMin, function(req, res, next){
   const fields = [];
 
   let options = {
-    url: 'https://rent-finder.herokuapp.com/filters',
+    url: `${urlConfig.deployUrl}filters`,
     headers:{
       'Content-type':'application/json'
     },
@@ -255,7 +256,7 @@ app.post('/deletefilter', checkNumMin,function(req, res, next){
   var filterNum = parseInt(req.body.text);
 
   let options = {
-    url:'https://rent-finder.herokuapp.com/filter',
+    url: `${urlConfig.deployUrl}filter`,
     headers:{
       'Content-type':'application/json'
     },

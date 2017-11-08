@@ -1,5 +1,6 @@
 'use strict';
 
+var urlConfig = require('../slack-pads.config.js');
 const express = require('express');
 const router = express.Router();
 const knex = require('../knex');
@@ -32,7 +33,7 @@ router.post('/scheduledscraper', (req, res, next) => {
       object.links = JSON.stringify(result);
 
       let options = {
-        url:'https://rent-finder.herokuapp.com/notifyuser',
+        url: `${urlConfig.deployUrl}notifyuser`,
         headers: {
           'Content-type':'application/json'
         },

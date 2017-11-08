@@ -1,5 +1,6 @@
 'use strict';
 
+var urlConfig = require('../slack-pads.config.js');
 const express = require('express');
 const router = express.Router();
 var knex = require('../knex');
@@ -10,7 +11,7 @@ router.post('/notifyuser', (req, res, next) => {
   console.log('in /notifyuser')
   var body = req.body;
   var options = {
-    url: 'https://hooks.slack.com/services/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',
+    url: `${urlConfig.rentBotUrl}`,
     headers: {
       'Content-type':'application/json'
     }, 

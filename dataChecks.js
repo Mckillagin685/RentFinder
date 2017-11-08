@@ -1,3 +1,4 @@
+var urlConfig = require('./slack-pads.config.js');
 var payloads = require("./payloads");
 var knex = require('./knex');
 var uuid = require('uuid');
@@ -82,7 +83,7 @@ function createFilterPrompt(incomingPayload){
           "text": "If you wish to view results use the command /listResults"
         }
         let options = {
-          url:'https://rent-finder.herokuapp.com/scrapenow',
+          url: `${urlConfig.deployUrl}scrapenow`,
           headers:{
             'Content-type':'application/json'
           },
