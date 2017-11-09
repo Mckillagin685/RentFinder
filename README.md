@@ -29,6 +29,8 @@ Know how to use git --> [Git tutorial](http://product.hubspot.com/blog/git-and-g
 
 Know how to use heroku --> [heroku deployment](https://devcenter.heroku.com/articles/deploying-nodejs)
 
+Know how to add psql to heroku --> [psql add-on](https://elements.heroku.com/addons/heroku-postgresql)
+
 ### CLI Commands
 
 ```
