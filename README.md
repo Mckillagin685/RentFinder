@@ -26,6 +26,7 @@ Look for ```slack-pads.config.js```
 ### Requirements
 
 Know how to use git --> [Git tutorial](http://product.hubspot.com/blog/git-and-github-tutorial-for-beginners)
+
 Know how to use heroku --> [heroku deployment](https://devcenter.heroku.com/articles/deploying-nodejs)
 
 ### CLI Commands
