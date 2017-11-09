@@ -1,10 +1,8 @@
 # Welcome to Slack-Pads repository
-=======
 
 This is the Git repository for the Slack app by the name of Slack-Pads.
 
 ## Link config file and brief set-up
-------
 
 ### Setting up a slack app
 
@@ -24,7 +22,6 @@ Look for ```slack-pads.config.js```
 --- ``` rentBotUrl ``` is the url to your bot in your slack channel. Must have set up a bot and an incoming webhook. see [incoming webhooks](https://api.slack.com/incoming-webhooks) and [bot-users](https://api.slack.com/bot-users) for more info
 
 ## Heroku deployment
-------
 
 ### Requirements
 
@@ -42,7 +39,6 @@ heroku open
 ```
 
 ## Future Implimentation 
-------
 
 Full Slack app distibution
 
