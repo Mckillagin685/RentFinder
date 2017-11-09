@@ -10,7 +10,7 @@ Must be channel admin or similar access.
 
 brief video walkthrough of setting up a slack app
 
-[![Slack app tutorial](https://img.youtube.com/vi/watch?v=vSWj9nAhUiw&t=406s/0.jpg)](https://www.youtube.com/watch?v=vSWj9nAhUiw&t=406s)
+[![Slack app tutorial](https://img.youtube.com/vi/watch?v=vSWj9nAhUiw&t/0.jpg)](https://www.youtube.com/watch?v=vSWj9nAhUiw&t)
 
 
 ### Config file and more
