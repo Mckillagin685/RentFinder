@@ -43,7 +43,7 @@ heroku open
 
 ## Future Implimentation 
 
-Full Slack app distibution
+Full Slack app distribution
 
 Editing commands
 
